@@ -7,7 +7,7 @@
   "author": "clutch@lyft.com",
   "main": "dist/index.js",
   "files": [
-    "dist" 
+    "dist"
   ],
   "scripts": {
     "clean": "rm -rf ./dist && rm -f tsconfig.tsbuildinfo",
@@ -36,7 +36,6 @@
     "@clutch-sh/tools": "^1.0.0-beta"
   },
   "engines": {
-    "node": ">=16.0.0 <17",
-    "yarn": "^1.22.5"
+    "node": ">=16.0.0 <17"
   }
 }
