@@ -59,26 +59,32 @@ interface GenericSimpleFeatureFlagStateProps {
  * A generic simple feature flag component. This exists to mask the feature enabled
  * state as a prop on the exposed On/Off components.
  */
-const GenericSimpleFeatureFlagState = ({
+function GenericSimpleFeatureFlagState({
   children,
   enabled,
   expectedState,
-}: GenericSimpleFeatureFlagStateProps) => <>{enabled === expectedState && children}</>;
+}: GenericSimpleFeatureFlagStateProps) {
+  return <>{enabled === expectedState && children}</>;
+}
 
 interface SimpleFeatureFlagStateProps {
   /** Children that will be rendered if the feature is on/off */
   children: React.ReactNode;
 }
 
-const FeatureOn = ({ children }: SimpleFeatureFlagStateProps) => <>{children}</>;
+function FeatureOn({ children }: SimpleFeatureFlagStateProps) {
+  return <>{children}</>;
+}
 
-const FeatureOff = ({ children }: SimpleFeatureFlagStateProps) => <>{children}</>;
+function FeatureOff({ children }: SimpleFeatureFlagStateProps) {
+  return <>{children}</>;
+}
 
 /**
  * A feature flag wrapper that evaluates a binary value of a specified flag to determine
  * if it's children should be shown.
  */
-const SimpleFeatureFlag = ({ feature, children }: SimpleFeatureFlagProps) => {
+function SimpleFeatureFlag({ feature, children }: SimpleFeatureFlagProps) {
   const cachedFlags = JSON.parse(sessionStorage.getItem("featureFlags"));
   const [flags, setFlags] = React.useState(cachedFlags?.flags || {});
   const [featureEnabled, setFeatureEnabled] = React.useState(false);
@@ -110,6 +116,6 @@ const SimpleFeatureFlag = ({ feature, children }: SimpleFeatureFlagProps) => {
   ));
 
   return <>{statefulChildren}</>;
-};
+}
 
 export { FEATURE_FLAG_POLL_RATE, featureFlags, FeatureOff, FeatureOn, SimpleFeatureFlag };

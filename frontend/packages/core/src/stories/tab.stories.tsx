@@ -13,7 +13,9 @@ export default {
   },
 } as Meta;
 
-const Template = (props: TabProps) => <Tab {...props} />;
+function Template(props: TabProps) {
+  return <Tab {...props} />;
+}
 
 export const Primary = Template.bind({});
 Primary.args = {

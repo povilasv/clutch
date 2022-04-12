@@ -95,8 +95,8 @@ const StyledChip = styled(MuiChip)<{
   })
 );
 
-const Chip = ({ variant, filled = false, size = "medium", ...props }: ChipProps) => (
-  <StyledChip $variant={variant} $filled={filled} size={size} {...props} />
-);
+function Chip({ variant, filled = false, size = "medium", ...props }: ChipProps) {
+  return <StyledChip $variant={variant} $filled={filled} size={size} {...props} />;
+}
 
 export { Chip, CHIP_VARIANTS };

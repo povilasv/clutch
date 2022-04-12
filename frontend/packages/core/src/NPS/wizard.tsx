@@ -15,7 +15,7 @@ const NPSContainer = styled("div")<{ $submit: boolean }>(
   })
 );
 
-const NPSWizard = () => {
+function NPSWizard() {
   const [hasSubmit, setSubmit] = useState<boolean>(false);
 
   return (
@@ -23,6 +23,6 @@ const NPSWizard = () => {
       <NPSFeedback origin="WIZARD" onSubmit={setSubmit} />
     </NPSContainer>
   );
-};
+}
 
 export default NPSWizard;

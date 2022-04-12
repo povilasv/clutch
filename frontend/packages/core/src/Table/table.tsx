@@ -98,19 +98,21 @@ interface TableCellProps extends MuiTableCellProps {
   responsive?: boolean;
 }
 
-const TableCell = ({ action, border, responsive, ...props }: TableCellProps) => (
-  <StyledTableCell $action={action} $border={border} $responsive={responsive} {...props} />
-);
+function TableCell({ action, border, responsive, ...props }: TableCellProps) {
+  return <StyledTableCell $action={action} $border={border} $responsive={responsive} {...props} />;
+}
 
 interface TableContainerProps {
   children: React.ReactElement<TableProps>;
 }
 
-const TableContainer = ({ children }: TableContainerProps) => (
-  <MuiTableContainer component={StyledPaper} elevation={0}>
-    {children}
-  </MuiTableContainer>
-);
+function TableContainer({ children }: TableContainerProps) {
+  return (
+    <MuiTableContainer component={StyledPaper} elevation={0}>
+      {children}
+    </MuiTableContainer>
+  );
+}
 
 interface TableProps extends Pick<MuiTableProps, "stickyHeader"> {
   /** The names of the columns. This must be set (even to empty string) to render the table. */
@@ -190,16 +192,18 @@ export interface TableRowProps extends Pick<MuiTableRowProps, "onClick"> {
   responsive?: boolean;
 }
 
-const TableRow = ({ children = [], onClick, cellDefault, responsive = false }: TableRowProps) => (
-  <StyledTableRow onClick={onClick} $responsive={responsive}>
-    {React.Children.map(children, (value, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <StyledTableCell key={index} $responsive={responsive}>
-        {value === null && cellDefault !== undefined ? cellDefault : value}
-      </StyledTableCell>
-    ))}
-  </StyledTableRow>
-);
+function TableRow({ children = [], onClick, cellDefault, responsive = false }: TableRowProps) {
+  return (
+    <StyledTableRow onClick={onClick} $responsive={responsive}>
+      {React.Children.map(children, (value, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <StyledTableCell key={index} $responsive={responsive}>
+          {value === null && cellDefault !== undefined ? cellDefault : value}
+        </StyledTableCell>
+      ))}
+    </StyledTableRow>
+  );
+}
 
 interface TableRowActionProps {
   children: string;
@@ -207,17 +211,19 @@ interface TableRowActionProps {
   icon?: React.ReactElement;
 }
 
-const TableRowAction = ({ children, onClick, icon }: TableRowActionProps) => (
-  <PopperItem icon={icon} onClick={onClick}>
-    {children}
-  </PopperItem>
-);
+function TableRowAction({ children, onClick, icon }: TableRowActionProps) {
+  return (
+    <PopperItem icon={icon} onClick={onClick}>
+      {children}
+    </PopperItem>
+  );
+}
 
 interface TableRowActionsProps {
   children?: React.ReactElement<TableRowActionProps> | React.ReactElement<TableRowActionProps>[];
 }
 
-const TableRowActions = ({ children }: TableRowActionsProps) => {
+function TableRowActions({ children }: TableRowActionsProps) {
   const anchorRef = React.useRef(null);
   const [open, setOpen] = React.useState(false);
 
@@ -241,7 +247,7 @@ const TableRowActions = ({ children }: TableRowActionsProps) => {
       </Popper>
     </>
   );
-};
+}
 
 export { TableCell, Table, TableContainer, TableRow, TableRowAction, TableRowActions };
 

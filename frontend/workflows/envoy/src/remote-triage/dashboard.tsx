@@ -48,7 +48,7 @@ const PIECHART_OUTER_RADIUS = 100;
 const PIECHART_INNER_RADIUS = 70;
 const PIECHART_ANIMATION_DURATION_MS = 200;
 
-const FeaturedSummary = ({ summary }: { summary: FeaturedSummaryProps }) => {
+function FeaturedSummary({ summary }: { summary: FeaturedSummaryProps }) {
   const total = (summary?.data || []).reduce((t, { value = 0 }) => t + value, 0);
   return (
     <FeaturedSummaryContainer item>
@@ -85,7 +85,7 @@ const FeaturedSummary = ({ summary }: { summary: FeaturedSummaryProps }) => {
       </Paper>
     </FeaturedSummaryContainer>
   );
-};
+}
 
 const SummariesContainer = styled(Grid)({
   textAlign: "center",
@@ -105,7 +105,7 @@ interface DashboardProps {
   }[];
 }
 
-const Dashboard = ({ serverInfo, featuredSummary, summaries }: DashboardProps) => {
+function Dashboard({ serverInfo, featuredSummary, summaries }: DashboardProps) {
   const INFORMATION_KEYS = [
     "hot_restart_version",
     "uptime_all_epochs",
@@ -137,6 +137,6 @@ const Dashboard = ({ serverInfo, featuredSummary, summaries }: DashboardProps) =
       </InformationContainer>
     </div>
   );
-};
+}
 
 export default Dashboard;

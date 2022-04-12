@@ -17,21 +17,23 @@ const StyledContainer = styled(Grid)({
   height: "100%",
 });
 
-const ProjectHeader = ({
+function ProjectHeader({
   name,
   routeTitle = "Project Catalog",
   description = "",
-}: ProjectHeaderProps) => (
-  <StyledContainer container direction="column">
-    <Grid container item direction="row" alignItems="flex-end">
-      <Typography variant="body4">{routeTitle}</Typography>&nbsp;/&nbsp;
-      <Typography variant="caption2">{name}</Typography>
-    </Grid>
-    <StyledHeading>
-      <Typography variant="h2">{name}</Typography>
-    </StyledHeading>
-    {description.length && <Typography variant="body2">{description}</Typography>}
-  </StyledContainer>
-);
+}: ProjectHeaderProps) {
+  return (
+    <StyledContainer container direction="column">
+      <Grid container item direction="row" alignItems="flex-end">
+        <Typography variant="body4">{routeTitle}</Typography>&nbsp;/&nbsp;
+        <Typography variant="caption2">{name}</Typography>
+      </Grid>
+      <StyledHeading>
+        <Typography variant="h2">{name}</Typography>
+      </StyledHeading>
+      {description.length && <Typography variant="body2">{description}</Typography>}
+    </StyledContainer>
+  );
+}
 
 export default ProjectHeader;

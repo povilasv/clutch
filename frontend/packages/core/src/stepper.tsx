@@ -162,30 +162,32 @@ export interface StepperProps {
   children?: React.ReactElement<StepProps>[] | React.ReactElement<StepProps>;
 }
 
-const Stepper = ({ activeStep, children }: StepperProps) => (
-  <StepContainer>
-    <MuiStepper activeStep={activeStep} connector={<MuiStepConnector />} alternativeLabel>
-      {React.Children.map(children, (step: any, idx: number) => {
-        const stepProps = {
-          index: idx + 1,
-          variant: "pending" as StepIconVariant,
-        };
-        if (idx === activeStep) {
-          stepProps.variant = step.props.error ? "failed" : "active";
-        } else if (idx < activeStep) {
-          stepProps.variant = "success";
-        }
+function Stepper({ activeStep, children }: StepperProps) {
+  return (
+    <StepContainer>
+      <MuiStepper activeStep={activeStep} connector={<MuiStepConnector />} alternativeLabel>
+        {React.Children.map(children, (step: any, idx: number) => {
+          const stepProps = {
+            index: idx + 1,
+            variant: "pending" as StepIconVariant,
+          };
+          if (idx === activeStep) {
+            stepProps.variant = step.props.error ? "failed" : "active";
+          } else if (idx < activeStep) {
+            stepProps.variant = "success";
+          }
 
-        return (
-          <MuiStep key={step.props.label}>
-            <MuiStepLabel StepIconComponent={() => <StepIcon {...stepProps} />}>
-              {step.props.label ?? `Step ${idx + 1}`}
-            </MuiStepLabel>
-          </MuiStep>
-        );
-      })}
-    </MuiStepper>
-  </StepContainer>
-);
+          return (
+            <MuiStep key={step.props.label}>
+              <MuiStepLabel StepIconComponent={() => <StepIcon {...stepProps} />}>
+                {step.props.label ?? `Step ${idx + 1}`}
+              </MuiStepLabel>
+            </MuiStep>
+          );
+        })}
+      </MuiStepper>
+    </StepContainer>
+  );
+}
 
 export { Stepper, Step };

@@ -8,7 +8,7 @@ export default {
   component: Hint,
 } as Meta;
 
-const Template = (props: { url: string; text: string }) => {
+function Template(props: { url: string; text: string }) {
   const { text, url } = props;
   return (
     <Hint>
@@ -16,7 +16,7 @@ const Template = (props: { url: string; text: string }) => {
       <div style={{ padding: "10px" }}>{text}</div>
     </Hint>
   );
-};
+}
 
 export const Primary = Template.bind({});
 Primary.args = {

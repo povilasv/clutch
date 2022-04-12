@@ -17,6 +17,8 @@ export default {
   component: Landing,
 } as Meta;
 
-const Template = () => <Landing />;
+function Template() {
+  return <Landing />;
+}
 
 export const Primary = Template.bind({});

@@ -12,7 +12,9 @@ export default {
   },
 } as Meta;
 
-const Template = (props: RadioProps) => <Radio {...props} />;
+function Template(props: RadioProps) {
+  return <Radio {...props} />;
+}
 
 export const Primary = Template.bind({});
 Primary.args = {

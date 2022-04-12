@@ -45,14 +45,16 @@ const PlaceholderText = styled.div({
   color: "rgba(13, 16, 48, 0.6)",
 });
 
-const Placeholder = () => (
-  <Paper>
-    <div style={{ margin: "32px", textAlign: "center" }}>
-      <PlaceholderTitle>There is nothing to display here</PlaceholderTitle>
-      <PlaceholderText>Please enter a namespace and clientset to proceed.</PlaceholderText>
-    </div>
-  </Paper>
-);
+function Placeholder() {
+  return (
+    <Paper>
+      <div style={{ margin: "32px", textAlign: "center" }}>
+        <PlaceholderTitle>There is nothing to display here</PlaceholderTitle>
+        <PlaceholderText>Please enter a namespace and clientset to proceed.</PlaceholderText>
+      </div>
+    </Paper>
+  );
+}
 
 const defaultRequestData = inputData => {
   return {

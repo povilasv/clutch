@@ -109,7 +109,7 @@ const SchemaDetails = styled(AccordionDetails)({
   },
 });
 
-const SchemaResolver = ({ schema, expanded, onClick, submitHandler }: SchemaResolverProps) => {
+function SchemaResolver({ schema, expanded, onClick, submitHandler }: SchemaResolverProps) {
   const [data, setData] = React.useState({ "@type": schema.typeUrl });
 
   const schemaValidation = useForm({
@@ -145,6 +145,6 @@ const SchemaResolver = ({ schema, expanded, onClick, submitHandler }: SchemaReso
       </Accordion>
     </Form>
   );
-};
+}
 
 export { SchemaResolver, QueryResolver };

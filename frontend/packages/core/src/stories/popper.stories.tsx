@@ -11,7 +11,7 @@ export default {
   component: Popper,
 } as Meta;
 
-const Template = ({ children, ...props }: PopperProps) => {
+function Template({ children, ...props }: PopperProps) {
   const anchorRef = React.useRef(null);
   const [open, setOpen] = React.useState(false);
 
@@ -30,7 +30,7 @@ const Template = ({ children, ...props }: PopperProps) => {
       </Popper>
     </>
   );
-};
+}
 
 export const Primary = Template.bind({});
 Primary.args = {

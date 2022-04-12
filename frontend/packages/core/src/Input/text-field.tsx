@@ -17,14 +17,16 @@ import _ from "lodash";
 
 const KEY_ENTER = 13;
 
-const BaseTextField = ({ InputProps, InputLabelProps, ...props }: MuiStandardTextFieldProps) => (
-  <MuiTextField
-    InputLabelProps={{ ...InputLabelProps, shrink: true }}
-    InputProps={{ ...InputProps, disableUnderline: true }}
-    fullWidth
-    {...props}
-  />
-);
+function BaseTextField({ InputProps, InputLabelProps, ...props }: MuiStandardTextFieldProps) {
+  return (
+    <MuiTextField
+      InputLabelProps={{ ...InputLabelProps, shrink: true }}
+      InputProps={{ ...InputProps, disableUnderline: true }}
+      fullWidth
+      {...props}
+    />
+  );
+}
 
 const StyledTextField = styled(BaseTextField)({
   ".MuiInputLabel-root": {
@@ -183,7 +185,7 @@ export interface TextFieldProps
   autocompleteCallback?: (v: string) => Promise<{ results: { id?: string; label: string }[] }>;
 }
 
-const TextField = ({
+function TextField({
   onChange,
   onReturn,
   error,
@@ -195,7 +197,7 @@ const TextField = ({
   value,
   fullWidth = true,
   ...props
-}: TextFieldProps) => {
+}: TextFieldProps) {
   const onKeyDown = (
     e: React.KeyboardEvent<HTMLDivElement | HTMLTextAreaElement | HTMLInputElement>
   ) => {
@@ -297,6 +299,6 @@ const TextField = ({
       {...props}
     />
   );
-};
+}
 
 export default TextField;

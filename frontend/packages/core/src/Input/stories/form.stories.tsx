@@ -11,7 +11,7 @@ export default {
   component: Form,
 } as Meta;
 
-const Template = ({ hasRow = false }: { hasRow: boolean }) => {
+function Template({ hasRow = false }: { hasRow: boolean }) {
   const children = (
     <>
       <TextField />
@@ -30,7 +30,7 @@ const Template = ({ hasRow = false }: { hasRow: boolean }) => {
       <Button text="Submit Form" type="submit" />
     </Form>
   );
-};
+}
 
 export const Primary = Template.bind({});
 

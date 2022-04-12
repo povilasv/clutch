@@ -10,7 +10,9 @@ export default {
   component: HorizontalRule,
 } as Meta;
 
-const Template = (props: HorizontalRuleProps) => <HorizontalRule {...props} />;
+function Template(props: HorizontalRuleProps) {
+  return <HorizontalRule {...props} />;
+}
 
 export const Basic = Template.bind({});
 Basic.args = {

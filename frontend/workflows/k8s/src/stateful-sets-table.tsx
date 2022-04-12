@@ -10,7 +10,7 @@ const StatefulSetsContainer = styled.div({
   maxHeight: "50vh",
 });
 
-const StatefulSetTable = () => {
+function StatefulSetTable() {
   const statefulSetListData = useDataLayout("statefulSetListData", { hydrate: false });
   const statefulSets = statefulSetListData.displayValue()
     ?.statefulSets as IClutch.k8s.v1.StatefulSet[];
@@ -38,6 +38,6 @@ const StatefulSetTable = () => {
       </Table>
     </StatefulSetsContainer>
   );
-};
+}
 
 export default StatefulSetTable;

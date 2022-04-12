@@ -12,7 +12,9 @@ export default {
   },
 } as Meta;
 
-const Template = (props: SwitchProps) => <Switch {...props} />;
+function Template(props: SwitchProps) {
+  return <Switch {...props} />;
+}
 
 export const Primary = Template.bind({});
 

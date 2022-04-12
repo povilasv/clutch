@@ -28,7 +28,7 @@ interface QuickLinkContainerProps {
 
 const ICON_SIZE = "32px";
 
-const QuickLinkContainer = ({ key, name, children }: QuickLinkContainerProps) => {
+function QuickLinkContainer({ key, name, children }: QuickLinkContainerProps) {
   const container = (
     <Tooltip title={name}>
       <TooltipContainer>{children}</TooltipContainer>
@@ -40,11 +40,11 @@ const QuickLinkContainer = ({ key, name, children }: QuickLinkContainerProps) =>
       {name ? container : children}
     </Grid>
   );
-};
+}
 
 // If only a single link, then no popper is necessary
-const QuickLink = ({ link, linkGroupName, linkGroupImage }: QuickLinkProps) =>
-  link?.url ? (
+function QuickLink({ link, linkGroupName, linkGroupImage }: QuickLinkProps) {
+  return link?.url ? (
     <QuickLinkContainer key={link.name} name={linkGroupName}>
       <Link href={link.url}>
         <img
@@ -56,12 +56,13 @@ const QuickLink = ({ link, linkGroupName, linkGroupImage }: QuickLinkProps) =>
       </Link>
     </QuickLinkContainer>
   ) : null;
+}
 
 interface QuickLinkGroupProps extends LinkGroupProps {
   links: IClutch.core.project.v1.ILink[];
 }
 // Have a popper in the case of multiple links per group
-const QuickLinkGroup = ({ linkGroupName, linkGroupImage, links }: QuickLinkGroupProps) => {
+function QuickLinkGroup({ linkGroupName, linkGroupImage, links }: QuickLinkGroupProps) {
   const anchorRef = React.useRef(null);
   const [open, setOpen] = React.useState(false);
   const [validLinks, setValidLinks] = React.useState<IClutch.core.project.v1.ILink[]>([]);
@@ -97,41 +98,43 @@ const QuickLinkGroup = ({ linkGroupName, linkGroupImage, links }: QuickLinkGroup
       </Popper>
     </QuickLinkContainer>
   );
-};
+}
 export interface QuickLinksProps {
   linkGroups: IClutch.core.project.v1.ILinkGroup[];
 }
 
-const QuickLinksCard = ({ linkGroups }: QuickLinksProps) => (
-  <Card>
-    <Grid
-      container
-      item
-      direction="column"
-      alignItems="center"
-      spacing={1}
-      style={{ padding: "8px" }}
-    >
-      {(linkGroups || []).map(linkGroup => {
-        if (linkGroup.links?.length === 1) {
+function QuickLinksCard({ linkGroups }: QuickLinksProps) {
+  return (
+    <Card>
+      <Grid
+        container
+        item
+        direction="column"
+        alignItems="center"
+        spacing={1}
+        style={{ padding: "8px" }}
+      >
+        {(linkGroups || []).map(linkGroup => {
+          if (linkGroup.links?.length === 1) {
+            return (
+              <QuickLink
+                link={linkGroup.links[0]}
+                linkGroupName={linkGroup.name ?? ""}
+                linkGroupImage={linkGroup.imagePath ?? ""}
+              />
+            );
+          }
           return (
-            <QuickLink
-              link={linkGroup.links[0]}
+            <QuickLinkGroup
               linkGroupName={linkGroup.name ?? ""}
               linkGroupImage={linkGroup.imagePath ?? ""}
+              links={linkGroup?.links ?? []}
             />
           );
-        }
-        return (
-          <QuickLinkGroup
-            linkGroupName={linkGroup.name ?? ""}
-            linkGroupImage={linkGroup.imagePath ?? ""}
-            links={linkGroup?.links ?? []}
-          />
-        );
-      })}
-    </Grid>
-  </Card>
-);
+        })}
+      </Grid>
+    </Card>
+  );
+}
 
 export default QuickLinksCard;

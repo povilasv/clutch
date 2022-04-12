@@ -11,7 +11,9 @@ export default {
   component: Tooltip,
 } as Meta;
 
-const Template = (props: TooltipProps) => <Tooltip {...props} />;
+function Template(props: TooltipProps) {
+  return <Tooltip {...props} />;
+}
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -23,20 +25,22 @@ Primary.args = {
 const text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacinia purus scelerisque imperdiet viverra erat lectus volutpat mi.
 At purus nunc, lacus fermentum quam pulvinar vel, maecenas.`;
 
-const MultilineText = () => (
-  <>
-    <TooltipContainer>
-      <Typography variant="body4" color="#FFFFFF">
-        {text}
-      </Typography>
-    </TooltipContainer>
-    <TooltipContainer>
-      <Typography variant="body4" color="#FFFFFF">
-        {text}
-      </Typography>
-    </TooltipContainer>
-  </>
-);
+function MultilineText() {
+  return (
+    <>
+      <TooltipContainer>
+        <Typography variant="body4" color="#FFFFFF">
+          {text}
+        </Typography>
+      </TooltipContainer>
+      <TooltipContainer>
+        <Typography variant="body4" color="#FFFFFF">
+          {text}
+        </Typography>
+      </TooltipContainer>
+    </>
+  );
+}
 export const MultilineTooltip = Template.bind({});
 MultilineTooltip.args = {
   title: <MultilineText />,

@@ -29,11 +29,11 @@ const convertChangeEvent = (
   };
 };
 
-const StringField = (
+function StringField(
   field: clutch.resolver.v1.IField,
   onChange: (e: ResolverChangeEvent) => void,
   validation: any
-): React.ReactElement => {
+): React.ReactElement {
   const errorMsg =
     validation?.errors?.[field.name]?.message || validation?.errors?.[field.name]?.type || "";
 
@@ -57,12 +57,12 @@ const StringField = (
       error={!!errorMsg}
     />
   );
-};
+}
 
-const OptionField = (
+function OptionField(
   field: clutch.resolver.v1.IField,
   onChange: (e: ResolverChangeEvent) => void
-): React.ReactElement => {
+): React.ReactElement {
   const sortedOptions = _.sortBy(field.metadata.optionField.options, o => o.displayName);
   React.useEffect(() => {
     onChange({
@@ -95,7 +95,7 @@ const OptionField = (
       options={options}
     />
   );
-};
+}
 
 const FIELD_TYPES = {
   stringField: StringField,

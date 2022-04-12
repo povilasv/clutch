@@ -19,7 +19,7 @@ const StyledRow = styled(Grid)({
   width: "100%",
 });
 
-const ProjectInfoCard = ({ projectData, addtlChips }: ProjectInfoProps) => {
+function ProjectInfoCard({ projectData, addtlChips }: ProjectInfoProps) {
   const [chips, setChips] = React.useState<ProjectInfoChip[]>([]);
 
   React.useEffect(() => {
@@ -64,6 +64,6 @@ const ProjectInfoCard = ({ projectData, addtlChips }: ProjectInfoProps) => {
       ) : null}
     </>
   );
-};
+}
 
 export default ProjectInfoCard;

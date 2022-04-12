@@ -95,7 +95,7 @@ interface ErrorDetailsProps {
   error: ClutchError;
 }
 
-const ErrorDetails = ({ error }: ErrorDetailsProps) => {
+function ErrorDetails({ error }: ErrorDetailsProps) {
   const [detailsOpen, setDetailsOpen] = React.useState(false);
   const [expanded, setExpanded] = useControlled({
     controlled: undefined,
@@ -184,6 +184,6 @@ const ErrorDetails = ({ error }: ErrorDetailsProps) => {
       <ErrorDetailsDialog error={error} open={detailsOpen} onClose={() => setDetailsOpen(false)} />
     </>
   );
-};
+}
 
 export default ErrorDetails;

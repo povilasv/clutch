@@ -29,7 +29,7 @@ const Content = styled.div({
   margin: "32px 0",
 });
 
-const K8sDashSearch = ({ onSubmit }) => {
+function K8sDashSearch({ onSubmit }) {
   const { errors, handleSubmit, register } = useForm({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -94,6 +94,6 @@ const K8sDashSearch = ({ onSubmit }) => {
       <Content>{error !== undefined ? <Error subject={error} /> : <></>}</Content>
     </Container>
   );
-};
+}
 
 export default K8sDashSearch;

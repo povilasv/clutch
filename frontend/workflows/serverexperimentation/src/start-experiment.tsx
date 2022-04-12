@@ -13,10 +13,9 @@ import {
   useNavigate,
 } from "@clutch-sh/core";
 import { FormFields, PageLayout } from "@clutch-sh/experimentation";
+import type { FormItem } from "@clutch-sh/experimentation/src/core/form-fields";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
-import type { FormItem } from "../../experimentation/src/core/form-fields";
 
 enum FaultType {
   ABORT = "Abort",

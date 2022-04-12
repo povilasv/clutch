@@ -12,7 +12,7 @@ interface ProjectPullRequests {
   url?: string;
 }
 
-const RepositoryRow = ({ repo }: { repo: string }) => {
+function RepositoryRow({ repo }: { repo: string }) {
   const [name, setName] = React.useState<string>("");
   const [url, setUrl] = React.useState<string>();
   const [icon, setIcon] = React.useState<IconProp>(faCode);
@@ -76,6 +76,6 @@ const RepositoryRow = ({ repo }: { repo: string }) => {
       )}
     </>
   );
-};
+}
 
 export default RepositoryRow;

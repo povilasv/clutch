@@ -15,11 +15,13 @@ const BarContainer = styled("rect")<{ $fill: string; $width: string }>(
   })
 );
 
-const Bar = ({ fill, width }) => (
-  <svg width={width} height="12px">
-    <BarContainer $fill={fill} $width={width} />
-  </svg>
-);
+function Bar({ fill, width }) {
+  return (
+    <svg width={width} height="12px">
+      <BarContainer $fill={fill} $width={width} />
+    </svg>
+  );
+}
 
 interface RatioStatusProps {
   succeeded: number;
@@ -54,7 +56,7 @@ interface StatusRowProps {
   data: any[];
 }
 
-export const StatusRow = ({ success, data }: StatusRowProps) => {
+export function StatusRow({ success, data }: StatusRowProps) {
   const displayData = [...data];
   const headerValue = displayData.shift();
   const variant = success ? "success" : "failure";
@@ -64,7 +66,7 @@ export const StatusRow = ({ success, data }: StatusRowProps) => {
       <StatusIcon align="left" variant={variant} />
     </TableRow>
   );
-};
+}
 
 interface ClustersProps {
   clusters: IClutch.envoytriage.v1.IClusters;

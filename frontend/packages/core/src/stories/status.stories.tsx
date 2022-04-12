@@ -9,7 +9,9 @@ export default {
   component: StatusIcon,
 } as Meta;
 
-const Template = (props: StatusProps) => <StatusIcon {...props} />;
+function Template(props: StatusProps) {
+  return <StatusIcon {...props} />;
+}
 
 export const Primary = Template.bind({});
 

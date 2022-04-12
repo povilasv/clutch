@@ -10,7 +10,9 @@ export default {
   component: TextField,
 } as Meta;
 
-const Template = (props: TextFieldProps) => <TextField {...props} />;
+function Template(props: TextFieldProps) {
+  return <TextField {...props} />;
+}
 
 export const Primary = Template.bind({});
 Primary.args = {

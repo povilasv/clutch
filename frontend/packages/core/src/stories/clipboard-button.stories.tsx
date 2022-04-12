@@ -9,7 +9,9 @@ export default {
   component: ClipboardButton,
 } as Meta;
 
-const Template = (props: ClipboardButtonProps) => <ClipboardButton {...props} />;
+function Template(props: ClipboardButtonProps) {
+  return <ClipboardButton {...props} />;
+}
 
 export const Default = Template.bind({});
 Default.args = {

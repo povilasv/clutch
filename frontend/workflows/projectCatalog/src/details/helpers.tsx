@@ -23,15 +23,17 @@ interface EventTimeProps extends Pick<TimeAgoProps, "date"> {
   onClick?: () => void;
 }
 
-const EventTime = ({ onClick, ...props }: EventTimeProps) => (
-  <TimeAgo
-    {...props}
-    formatter={(value, unit) => `${value}${unitFormatter(unit)}`}
-    onClick={onClick}
-  />
-);
+function EventTime({ onClick, ...props }: EventTimeProps) {
+  return (
+    <TimeAgo
+      {...props}
+      formatter={(value, unit) => `${value}${unitFormatter(unit)}`}
+      onClick={onClick}
+    />
+  );
+}
 
-const LinkText = ({ text, link }: { text: string; link?: string }) => {
+function LinkText({ text, link }: { text: string; link?: string }) {
   const returnText = <Typography variant="body2">{text}</Typography>;
 
   if (link && text) {
@@ -39,7 +41,7 @@ const LinkText = ({ text, link }: { text: string; link?: string }) => {
   }
 
   return returnText;
-};
+}
 
 const parseTimestamp = (timestamp?: number | Long | null): number => {
   return parseInt(timestamp?.toString() || "0", 10);
@@ -50,7 +52,7 @@ const setMilliseconds = (timestamp?: number | Long | null): number => {
   return ts.setUTCMilliseconds(parseTimestamp(timestamp));
 };
 
-const LastEvent = ({ time }: { time: number }) => {
+function LastEvent({ time }: { time: number }) {
   return time ? (
     <>
       <Grid item>
@@ -63,6 +65,6 @@ const LastEvent = ({ time }: { time: number }) => {
       </Grid>
     </>
   ) : null;
-};
+}
 
 export { LastEvent, LinkText };

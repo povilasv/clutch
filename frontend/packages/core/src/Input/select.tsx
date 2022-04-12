@@ -54,30 +54,34 @@ const StyledInputLabel = styled(MuiInputLabel)({
   },
 });
 
-const SelectIcon = (props: any) => (
-  <div {...props}>
-    <ExpandMoreIcon />
-  </div>
-);
+function SelectIcon(props: any) {
+  return (
+    <div {...props}>
+      <ExpandMoreIcon />
+    </div>
+  );
+}
 
-const BaseSelect = ({ className, ...props }: MuiSelectProps) => (
-  <MuiSelect
-    disableUnderline
-    fullWidth
-    IconComponent={SelectIcon}
-    className={className}
-    MenuProps={{
-      classes: {
-        list: className,
-        paper: className,
-      },
-      anchorOrigin: { vertical: "bottom", horizontal: "left" },
-      transformOrigin: { vertical: "top", horizontal: "left" },
-      getContentAnchorEl: null,
-    }}
-    {...props}
-  />
-);
+function BaseSelect({ className, ...props }: MuiSelectProps) {
+  return (
+    <MuiSelect
+      disableUnderline
+      fullWidth
+      IconComponent={SelectIcon}
+      className={className}
+      MenuProps={{
+        classes: {
+          list: className,
+          paper: className,
+        },
+        anchorOrigin: { vertical: "bottom", horizontal: "left" },
+        transformOrigin: { vertical: "top", horizontal: "left" },
+        getContentAnchorEl: null,
+      }}
+      {...props}
+    />
+  );
+}
 
 const StyledSelect = styled(BaseSelect)({
   padding: "0",
@@ -204,7 +208,7 @@ export interface SelectProps extends Pick<MuiSelectProps, "disabled" | "error"> 
   onChange?: (value: string) => void;
 }
 
-const Select = ({
+function Select({
   defaultOption = 0,
   disabled,
   error,
@@ -213,7 +217,7 @@ const Select = ({
   name,
   options,
   onChange,
-}: SelectProps) => {
+}: SelectProps) {
   const defaultIdx = defaultOption < options.length && defaultOption > 0 ? defaultOption : 0;
   const [selectedIdx, setSelectedIdx] = React.useState(defaultIdx);
 
@@ -284,6 +288,6 @@ const Select = ({
       )}
     </StyledFormControl>
   );
-};
+}
 
 export default Select;

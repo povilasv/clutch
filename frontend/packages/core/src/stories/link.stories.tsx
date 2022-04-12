@@ -9,7 +9,9 @@ export default {
   component: Link,
 } as Meta;
 
-const Template = (props: LinkProps) => <Link {...props}>Clutch Homepage</Link>;
+function Template(props: LinkProps) {
+  return <Link {...props}>Clutch Homepage</Link>;
+}
 
 export const Default = Template.bind({});
 Default.args = {

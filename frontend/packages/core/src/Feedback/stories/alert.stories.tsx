@@ -9,7 +9,9 @@ export default {
   component: Alert,
 } as Meta;
 
-const Template = (props: AlertProps) => <Alert {...props}>This is a note</Alert>;
+function Template(props: AlertProps) {
+  return <Alert {...props}>This is a note</Alert>;
+}
 
 export const WithTitle = Template.bind({});
 WithTitle.args = {

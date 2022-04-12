@@ -36,7 +36,7 @@ export interface LinearTimelineProps {
  * wrapper for linecharts for this specific use case of having "lanes" of events and their timestamps.
  */
 // TODO(smonero): add tests for this component
-const LinearTimeline = ({
+function LinearTimeline({
   data,
   xAxisDataKey = "timestamp",
   regularIntervalTicks = true,
@@ -45,7 +45,7 @@ const LinearTimeline = ({
   // Note that we don't set the default tooltipFormatter here because we pass the styling vals into the default
   tooltipFormatterFunc = null,
   stylingProps = {},
-}: LinearTimelineProps) => {
+}: LinearTimelineProps) {
   const combinedData = Object.keys(data).reduce((acc, lane) => {
     return [...acc, ...data[lane].points];
   }, []);
@@ -136,6 +136,6 @@ const LinearTimeline = ({
       </ScatterChart>
     </ResponsiveContainer>
   );
-};
+}
 
 export default LinearTimeline;

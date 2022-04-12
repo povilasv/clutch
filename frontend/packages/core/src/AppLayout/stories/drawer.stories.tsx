@@ -59,11 +59,15 @@ export default {
   },
 } as Meta;
 
-export const Primary = () => <Drawer />;
+export function Primary() {
+  return <Drawer />;
+}
 
-export const WithHeader = () => (
-  <Grid direction="column">
-    <Header />
-    <Drawer />
-  </Grid>
-);
+export function WithHeader() {
+  return (
+    <Grid direction="column">
+      <Header />
+      <Drawer />
+    </Grid>
+  );
+}

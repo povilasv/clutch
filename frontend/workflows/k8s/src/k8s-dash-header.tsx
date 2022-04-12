@@ -17,11 +17,13 @@ const HeaderText = styled.div({
   color: "#0D1030",
 });
 
-const K8sDashHeader = () => (
-  <div>
-    <Category>Kubernetes/</Category>
-    <HeaderText>Kubernetes Resource Dashboard</HeaderText>
-  </div>
-);
+function K8sDashHeader() {
+  return (
+    <div>
+      <Category>Kubernetes/</Category>
+      <HeaderText>Kubernetes Resource Dashboard</HeaderText>
+    </div>
+  );
+}
 
 export default K8sDashHeader;

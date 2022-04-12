@@ -8,5 +8,7 @@ export default {
   component: NotFound,
 } as Meta;
 
-const Template = () => <NotFound />;
+function Template() {
+  return <NotFound />;
+}
 export const Default = Template.bind({});

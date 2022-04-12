@@ -16,7 +16,7 @@ const ChartContainer = styled("div")({
   height: 400,
 });
 
-export const SingleDataLine = () => {
+export function SingleDataLine() {
   const mockDataSingleLine = [
     {
       lineName: "line1",
@@ -91,9 +91,9 @@ export const SingleDataLine = () => {
       />
     </ChartContainer>
   );
-};
+}
 
-export const MultiLine = () => {
+export function MultiLine() {
   const mockDataMultiLine = [
     {
       lineName: "line1",
@@ -152,14 +152,14 @@ export const MultiLine = () => {
       />
     </ChartContainer>
   );
-};
+}
 
 /** *
  * This example shows that users can have raw values rather than using a formatter func
  * for the ticks along the X-Axis. It also shows reference lines and the disabling of
  * other options.
  */
-export const ReferenceLinesAndThingsDisabled = () => {
+export function ReferenceLinesAndThingsDisabled() {
   const mockData = [
     {
       lineName: "line1",
@@ -217,9 +217,9 @@ export const ReferenceLinesAndThingsDisabled = () => {
       />
     </ChartContainer>
   );
-};
+}
 
-export const StyledChart = () => {
+export function StyledChart() {
   const mockDataSingleLine = [
     {
       lineName: "line1",
@@ -280,4 +280,4 @@ export const StyledChart = () => {
       />
     </ChartContainer>
   );
-};
+}

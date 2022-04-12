@@ -28,13 +28,15 @@ const StyledQLContainer = styled(Grid)({
   margin: "-8px 16px 16px 0px",
 });
 
-const DisabledItem = ({ name }: { name: string }) => (
-  <Grid item>
-    <Tooltip title={`${capitalize(name)} is disabled`}>
-      <FontAwesomeIcon icon={faLock} size="lg" />
-    </Tooltip>
-  </Grid>
-);
+function DisabledItem({ name }: { name: string }) {
+  return (
+    <Grid item>
+      <Tooltip title={`${capitalize(name)} is disabled`}>
+        <FontAwesomeIcon icon={faLock} size="lg" />
+      </Tooltip>
+    </Grid>
+  );
+}
 
 const fetchProject = (project: string): Promise<IClutch.core.project.v1.IProject> =>
   client

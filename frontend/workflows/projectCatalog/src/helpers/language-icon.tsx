@@ -7,7 +7,7 @@ interface LanguageIconProps extends Pick<FontAwesomeIconProps, "size"> {
   language: string;
 }
 
-const LanguageIcon = ({ language, size = "lg", ...props }: LanguageIconProps) => {
+function LanguageIcon({ language, size = "lg", ...props }: LanguageIconProps) {
   let icon;
   switch (language) {
     case "python":
@@ -33,6 +33,6 @@ const LanguageIcon = ({ language, size = "lg", ...props }: LanguageIconProps) =>
   }
 
   return <FontAwesomeIcon icon={icon} size={size} {...props} />;
-};
+}
 
 export default LanguageIcon;

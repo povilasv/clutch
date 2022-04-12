@@ -17,11 +17,13 @@ export default {
   },
 } as Meta;
 
-const Template = (props: IconButtonProps) => (
-  <IconButton {...props}>
-    <SearchIcon />
-  </IconButton>
-);
+function Template(props: IconButtonProps) {
+  return (
+    <IconButton {...props}>
+      <SearchIcon />
+    </IconButton>
+  );
+}
 
 export const Primary = Template.bind({});
 

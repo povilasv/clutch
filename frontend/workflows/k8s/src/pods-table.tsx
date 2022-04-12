@@ -58,7 +58,7 @@ const timeFormatter = (value, unit, suffix) => {
   return `${value}${unit.charAt(0)} ${suffix}`;
 };
 
-const PodTable = () => {
+function PodTable() {
   const podListData = useDataLayout("podListData", { hydrate: false });
   const pods = podListData.displayValue()?.pods as IClutch.k8s.v1.Pod[];
   const navigate = useNavigate();
@@ -112,6 +112,6 @@ const PodTable = () => {
       </Table>
     </PodsContainer>
   );
-};
+}
 
 export { PodTable as default, timeFormatter, convertTime };

@@ -25,7 +25,7 @@ interface CardProps {
   title?: React.ReactNode & string;
 }
 
-const Card = ({ avatar, children, error, isLoading, summary, title }: CardProps) => {
+function Card({ avatar, children, error, isLoading, summary, title }: CardProps) {
   const [expanded, setExpanded] = React.useState(true);
 
   const handleExpandClick = () => {
@@ -57,6 +57,6 @@ const Card = ({ avatar, children, error, isLoading, summary, title }: CardProps)
       </ClutchCard>
     </Grid>
   );
-};
+}
 
 export default Card;

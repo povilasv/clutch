@@ -30,7 +30,7 @@ interface ProjectCardProps {
   onRemove: () => void;
 }
 
-const ProjectCard = ({ project, onRemove }: ProjectCardProps) => {
+function ProjectCard({ project, onRemove }: ProjectCardProps) {
   const remove = event => {
     event.stopPropagation();
     onRemove();
@@ -64,6 +64,6 @@ const ProjectCard = ({ project, onRemove }: ProjectCardProps) => {
       </Grid>
     </StyledCard>
   );
-};
+}
 
 export default ProjectCard;

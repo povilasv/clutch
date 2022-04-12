@@ -64,7 +64,7 @@ const Paper = styled(MuiPaper)({
   padding: "32px",
 });
 
-const Wizard = ({ heading, width = "default", dataLayout, children }: WizardProps) => {
+function Wizard({ heading, width = "default", dataLayout, children }: WizardProps) {
   const [state, dispatch] = useWizardState();
   const [wizardStepData, setWizardStepData] = React.useState<WizardStepData>({});
   const [globalWarnings, setGlobalWarnings] = React.useState<string[]>([]);
@@ -195,6 +195,6 @@ const Wizard = ({ heading, width = "default", dataLayout, children }: WizardProp
       ))}
     </Container>
   );
-};
+}
 
 export default Wizard;

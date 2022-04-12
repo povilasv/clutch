@@ -9,19 +9,21 @@ export default {
   component: AccordionGroup,
 } as Meta;
 
-const Template = (props: AccordionGroupProps) => (
-  <AccordionGroup {...props}>
-    <Accordion title="First Accordion">
-      <AccordionDetails>This is the first accordion.</AccordionDetails>
-    </Accordion>
-    <Accordion title="Second Accordion">
-      <AccordionDetails>This is the second accordion.</AccordionDetails>
-    </Accordion>
-    <Accordion title="Third Accordion">
-      <AccordionDetails>This is the third accordion.</AccordionDetails>
-    </Accordion>
-  </AccordionGroup>
-);
+function Template(props: AccordionGroupProps) {
+  return (
+    <AccordionGroup {...props}>
+      <Accordion title="First Accordion">
+        <AccordionDetails>This is the first accordion.</AccordionDetails>
+      </Accordion>
+      <Accordion title="Second Accordion">
+        <AccordionDetails>This is the second accordion.</AccordionDetails>
+      </Accordion>
+      <Accordion title="Third Accordion">
+        <AccordionDetails>This is the third accordion.</AccordionDetails>
+      </Accordion>
+    </AccordionGroup>
+  );
+}
 
 export const Primary = Template.bind({});
 Primary.args = {};

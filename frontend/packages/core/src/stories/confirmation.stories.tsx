@@ -8,7 +8,9 @@ export default {
   component: Confirmation,
 } as Meta;
 
-const Template = (props: { action: string }) => <Confirmation {...props} />;
+function Template(props: { action: string }) {
+  return <Confirmation {...props} />;
+}
 
 export const Default = Template.bind({});
 Default.args = {

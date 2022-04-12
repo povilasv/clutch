@@ -59,11 +59,13 @@ export default {
   },
 } as Meta;
 
-const Template = ({ severity, ...props }: ToastProps) => (
-  <Toast autoHideDuration={null} severity={severity} {...props}>
-    Informational {severity} Toast
-  </Toast>
-);
+function Template({ severity, ...props }: ToastProps) {
+  return (
+    <Toast autoHideDuration={null} severity={severity} {...props}>
+      Informational {severity} Toast
+    </Toast>
+  );
+}
 
 export const Primary = Template.bind({});
 Primary.args = {};

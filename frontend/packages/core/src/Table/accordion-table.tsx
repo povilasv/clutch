@@ -22,7 +22,7 @@ export interface AccordionRowProps {
   children: React.ReactElement<TableRowProps> | React.ReactElement<TableRowProps>[];
 }
 
-export const AccordionRow = ({ columns, children }: AccordionRowProps) => {
+export function AccordionRow({ columns, children }: AccordionRowProps) {
   const [open, setOpen] = React.useState(false);
   const hasChildren = React.Children.count(children) !== 0;
 
@@ -51,4 +51,4 @@ export const AccordionRow = ({ columns, children }: AccordionRowProps) => {
       {open && children}
     </>
   );
-};
+}

@@ -15,7 +15,7 @@ const ChartContainer = styled("div")({
   height: 200,
 });
 
-export const Primary = () => {
+export function Primary() {
   const mockData: LinearTimelineData = {
     deploys: { points: [{ timestamp: 1588884888 }], shape: "cross", color: "purple" },
     "k8s events": { points: [{ timestamp: 1588985888 }], shape: "triangle", color: "blue" },
@@ -44,9 +44,9 @@ export const Primary = () => {
       <LinearTimeline data={mockData} xAxisDataKey="timestamp" />
     </ChartContainer>
   );
-};
+}
 
-export const ColoredChart = () => {
+export function ColoredChart() {
   const mockData: LinearTimelineData = {
     deploys: { points: [{ timestamp: 1588884888 }], shape: "cross", color: "purple" },
     "k8s events": { points: [{ timestamp: 1588985888 }], shape: "triangle", color: "blue" },
@@ -85,4 +85,4 @@ export const ColoredChart = () => {
       />
     </ChartContainer>
   );
-};
+}

@@ -63,12 +63,14 @@ const Grid = styled(MuiGrid)({
   backgroundColor: "#131C5F",
 });
 
-const Template = () => (
-  <Grid container alignItems="center" justify="center">
-    <Box>
-      <SearchField />
-    </Box>
-  </Grid>
-);
+function Template() {
+  return (
+    <Grid container alignItems="center" justify="center">
+      <Box>
+        <SearchField />
+      </Box>
+    </Grid>
+  );
+}
 
 export const Primary = Template.bind({});

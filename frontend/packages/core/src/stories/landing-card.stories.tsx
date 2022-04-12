@@ -9,7 +9,9 @@ export default {
   component: LandingCard,
 } as Meta;
 
-const Template = (props: LandingCardProps) => <LandingCard {...props} />;
+function Template(props: LandingCardProps) {
+  return <LandingCard {...props} />;
+}
 
 export const Primary = Template.bind({});
 Primary.args = {

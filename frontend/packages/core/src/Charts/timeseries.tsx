@@ -58,7 +58,7 @@ export interface TimeseriesChartProps {
   The timestamps are interpreted as unix milliseconds.
 */
 // TODO(smonero): add tests for this component
-const TimeseriesChart = ({
+function TimeseriesChart({
   data,
   xAxisDataKey = "timestamp",
   yAxisDataKey = "value",
@@ -75,7 +75,7 @@ const TimeseriesChart = ({
   regularIntervalTicks = false,
   tooltipFormatterFunc = null,
   stylingProps = {},
-}: TimeseriesChartProps) => {
+}: TimeseriesChartProps) {
   if (singleLineMode) {
     data.sort((a, b) => a[xAxisDataKey] - b[xAxisDataKey]);
   }
@@ -169,6 +169,6 @@ const TimeseriesChart = ({
       </LineChart>
     </ResponsiveContainer>
   );
-};
+}
 
 export default TimeseriesChart;

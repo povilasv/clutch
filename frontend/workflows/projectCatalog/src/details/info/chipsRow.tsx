@@ -10,19 +10,21 @@ export interface ProjectInfoChip {
   variant?: typeof CHIP_VARIANTS[number];
 }
 
-const ChipsRow = ({ chips = [] }: { chips: ProjectInfoChip[] }) => (
-  <>
-    {chips.map(({ variant = "neutral", text, icon, title, url }) => {
-      const chipElem = <Chip variant={variant} label={text} size="small" icon={icon} />;
-      return (
-        <Grid item>
-          <Tooltip title={title ?? text}>
-            {url ? <Link href={url}>{chipElem}</Link> : chipElem}
-          </Tooltip>
-        </Grid>
-      );
-    })}
-  </>
-);
+function ChipsRow({ chips = [] }: { chips: ProjectInfoChip[] }) {
+  return (
+    <>
+      {chips.map(({ variant = "neutral", text, icon, title, url }) => {
+        const chipElem = <Chip variant={variant} label={text} size="small" icon={icon} />;
+        return (
+          <Grid item>
+            <Tooltip title={title ?? text}>
+              {url ? <Link href={url}>{chipElem}</Link> : chipElem}
+            </Tooltip>
+          </Grid>
+        );
+      })}
+    </>
+  );
+}
 
 export default ChipsRow;
