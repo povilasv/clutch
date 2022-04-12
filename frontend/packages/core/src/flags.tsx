@@ -16,7 +16,9 @@ const featureFlags = (): Promise<FeatureFlags> => {
   if (cachedFlags) {
     const elapsedTime = new Date(new Date().getTime() - cachedFlags.timestamp).getTime();
     if (elapsedTime < FF_CACHE_TTL) {
-      return new Promise(resolve => resolve(cachedFlags.flags));
+      return new Promise(resolve => {
+        resolve(cachedFlags.flags);
+      });
     }
   }
   return client
@@ -64,7 +66,7 @@ function GenericSimpleFeatureFlagState({
   enabled,
   expectedState,
 }: GenericSimpleFeatureFlagStateProps) {
-  return <>{enabled === expectedState && children}</>;
+  return enabled === expectedState && children;
 }
 
 interface SimpleFeatureFlagStateProps {
@@ -73,11 +75,11 @@ interface SimpleFeatureFlagStateProps {
 }
 
 function FeatureOn({ children }: SimpleFeatureFlagStateProps) {
-  return <>{children}</>;
+  return children;
 }
 
 function FeatureOff({ children }: SimpleFeatureFlagStateProps) {
-  return <>{children}</>;
+  return children;
 }
 
 /**
@@ -115,7 +117,7 @@ function SimpleFeatureFlag({ feature, children }: SimpleFeatureFlagProps) {
     </GenericSimpleFeatureFlagState>
   ));
 
-  return <>{statefulChildren}</>;
+  return statefulChildren;
 }
 
 export { FEATURE_FLAG_POLL_RATE, featureFlags, FeatureOff, FeatureOn, SimpleFeatureFlag };
