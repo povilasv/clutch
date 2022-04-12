@@ -30,6 +30,15 @@ module.exports = {
   },
   reportUnusedDisableDirectives: true,
   rules: {
+    "react/function-component-definition": [
+      "warn",
+      // Added this in as most of the functions are arrow-functions and didn't want to rebuild everything
+      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/function-component-definition.md
+      {
+        namedComponents: ["function-declaration", "function-expression", "arrow-function"],
+        unnamedComponents: ["function-expression", "arrow-function"],
+      },
+    ],
     "simple-import-sort/imports": [
       "error",
       {
