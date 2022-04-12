@@ -62,7 +62,7 @@ const Details: React.FC<ProjectDetailsWorkflowProps> = ({ children, chips }) => 
 
       React.Children.forEach(children, child => {
         if (React.isValidElement(child)) {
-          const { type } = child?.props;
+          const { type } = child?.props || {};
 
           switch (type) {
             case CardType.METADATA:
@@ -106,6 +106,8 @@ const Details: React.FC<ProjectDetailsWorkflowProps> = ({ children, chips }) => 
   };
 
   return (
+    // Disabling this lint rule as the value will need to change as projectInfo is updated and then passed down to the other components
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <ProjectDetailsContext.Provider value={{ projectInfo }}>
       <StyledContainer container direction="row" wrap="nowrap">
         {/* Column for project details and header */}
