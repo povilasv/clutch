@@ -43,7 +43,7 @@ const StyledAccordion = styled(MuiAccordion)({
   },
 });
 
-function AccordionSummaryBase({ children, collapsible, expanded, ...props }) {
+const AccordionSummaryBase = ({ children, collapsible, expanded, ...props }) => {
   return (
     <MuiAccordionSummary
       expandIcon={collapsible ? expanded ? <RemoveIcon /> : <AddIcon /> : null}
@@ -52,7 +52,7 @@ function AccordionSummaryBase({ children, collapsible, expanded, ...props }) {
       {children}
     </MuiAccordionSummary>
   );
-}
+};
 
 export const StyledAccordionSummary = styled(AccordionSummaryBase)({
   backgroundColor: "#fafafb",
@@ -98,7 +98,7 @@ export interface AccordionProps extends Pick<MuiAccordionProps, "defaultExpanded
   onClick?: React.MouseEventHandler;
 }
 
-export function Accordion({
+export const Accordion = ({
   title,
   collapsible = true,
   defaultExpanded,
@@ -106,7 +106,7 @@ export function Accordion({
   onClick: onClickProp,
   children,
   ...props
-}: AccordionProps) {
+}: AccordionProps) => {
   const [expanded, setExpanded] = useControlled({
     controlled: expandedProp,
     default: defaultExpanded,
@@ -131,14 +131,14 @@ export function Accordion({
       {children}
     </StyledAccordion>
   );
-}
+};
 
 export interface AccordionGroupProps {
   children?: React.ReactElement<AccordionProps> | React.ReactElement<AccordionProps>[];
   defaultExpandedIdx?: number;
 }
 
-export function AccordionGroup({ children, defaultExpandedIdx }: AccordionGroupProps) {
+export const AccordionGroup = ({ children, defaultExpandedIdx }: AccordionGroupProps) => {
   const [expandedIdx, setExpandedIdx] = React.useState(defaultExpandedIdx ?? -1);
 
   return (
@@ -157,7 +157,7 @@ export function AccordionGroup({ children, defaultExpandedIdx }: AccordionGroupP
       }
     </StyledAccordionGroup>
   );
-}
+};
 
 const StyledAccordionDetails = styled(MuiAccordionDetails)({
   display: "flex",

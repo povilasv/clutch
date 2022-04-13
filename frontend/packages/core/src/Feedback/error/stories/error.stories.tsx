@@ -10,9 +10,7 @@ export default {
   component: Error,
 } as Meta;
 
-function Template(props: ErrorProps) {
-  return <Error {...props} />;
-}
+const Template = (props: ErrorProps) => <Error {...props} />;
 
 export const Client = Template.bind({});
 Client.args = {

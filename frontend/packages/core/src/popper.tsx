@@ -78,14 +78,12 @@ export interface PopperItemProps extends Pick<ListItemProps, "selected"> {
   icon?: React.ReactElement;
 }
 
-function PopperItem({ children, componentProps, onClick, icon, ...props }: PopperItemProps) {
-  return (
-    <ListItem button onClick={onClick} id="popperItem" dense {...props} {...componentProps}>
-      {icon && <PopperItemIcon>{icon}</PopperItemIcon>}
-      <ListItemText>{children}</ListItemText>
-    </ListItem>
-  );
-}
+const PopperItem = ({ children, componentProps, onClick, icon, ...props }: PopperItemProps) => (
+  <ListItem button onClick={onClick} id="popperItem" dense {...props} {...componentProps}>
+    {icon && <PopperItemIcon>{icon}</PopperItemIcon>}
+    <ListItemText>{children}</ListItemText>
+  </ListItem>
+);
 
 export interface PopperProps
   extends Pick<ClickAwayListenerProps, "onClickAway">,
@@ -95,27 +93,25 @@ export interface PopperProps
   children?: React.ReactElement<PopperItemProps> | React.ReactElement<PopperItemProps>[];
   id?: string;
 }
-function Popper({
+const Popper = ({
   open,
   anchorRef,
   onClickAway,
   placement = "right-start",
   children,
   id,
-}: PopperProps) {
-  return (
-    <Collapse in={open} timeout="auto" unmountOnExit>
-      <StyledPopper open={open} anchorEl={anchorRef?.current} transition placement={placement}>
-        <Paper>
-          <ClickAwayListener onClickAway={onClickAway}>
-            <List component="div" disablePadding id={id}>
-              {children}
-            </List>
-          </ClickAwayListener>
-        </Paper>
-      </StyledPopper>
-    </Collapse>
-  );
-}
+}: PopperProps) => (
+  <Collapse in={open} timeout="auto" unmountOnExit>
+    <StyledPopper open={open} anchorEl={anchorRef?.current} transition placement={placement}>
+      <Paper>
+        <ClickAwayListener onClickAway={onClickAway}>
+          <List component="div" disablePadding id={id}>
+            {children}
+          </List>
+        </ClickAwayListener>
+      </Paper>
+    </StyledPopper>
+  </Collapse>
+);
 
 export { Popper, PopperItem };

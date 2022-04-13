@@ -16,13 +16,11 @@ const Grid = styled(MuiGrid)({
   backgroundColor: "#131C5F",
 });
 
-function Template(props: UserInformationProps) {
-  return (
-    <Grid container alignItems="center" justify="center">
-      <UserInformation {...props} />
-    </Grid>
-  );
-}
+const Template = (props: UserInformationProps) => (
+  <Grid container alignItems="center" justify="center">
+    <UserInformation {...props} />
+  </Grid>
+);
 export const Primary = Template.bind({});
 Primary.args = {
   data: [{ value: "Dashboard" }, { value: "Settings" }],

@@ -27,9 +27,7 @@ export interface CardProps {
   children?: React.ReactNode | React.ReactNode[];
 }
 
-function Card({ children, ...props }: CardProps) {
-  return <StyledCard {...props}>{children}</StyledCard>;
-}
+const Card = ({ children, ...props }: CardProps) => <StyledCard {...props}>{children}</StyledCard>;
 
 const StyledCardHeaderContainer = styled.div({
   background: "#EBEDFB",
@@ -83,38 +81,36 @@ interface CardHeaderProps {
   title: React.ReactNode;
 }
 
-function CardHeader({ actions, avatar, children, title, summary = [] }: CardHeaderProps) {
-  return (
-    <StyledCardHeaderContainer>
-      <StyledCardHeader container wrap="nowrap" alignItems="center">
-        <StyledCardHeaderAvatarContainer>
-          <StyledCardHeaderAvatar>{avatar}</StyledCardHeaderAvatar>
-        </StyledCardHeaderAvatarContainer>
-        <Grid container wrap="nowrap" alignItems="center">
-          <Grid item xs>
-            <Typography variant="h4">{title}</Typography>
-          </Grid>
-          {summary.map((section: CardHeaderSummaryProps, idx: number) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <React.Fragment key={idx}>
-              <StyledDivider orientation="vertical" />
-              <StyledGridItem item xs>
-                {section.title}
-                {section.subheader && (
-                  <Typography variant="body4" color="rgba(13, 16, 48, 0.6)">
-                    {section.subheader}
-                  </Typography>
-                )}
-              </StyledGridItem>
-            </React.Fragment>
-          ))}
+const CardHeader = ({ actions, avatar, children, title, summary = [] }: CardHeaderProps) => (
+  <StyledCardHeaderContainer>
+    <StyledCardHeader container wrap="nowrap" alignItems="center">
+      <StyledCardHeaderAvatarContainer>
+        <StyledCardHeaderAvatar>{avatar}</StyledCardHeaderAvatar>
+      </StyledCardHeaderAvatarContainer>
+      <Grid container wrap="nowrap" alignItems="center">
+        <Grid item xs>
+          <Typography variant="h4">{title}</Typography>
         </Grid>
-        {actions}
-      </StyledCardHeader>
-      {children}
-    </StyledCardHeaderContainer>
-  );
-}
+        {summary.map((section: CardHeaderSummaryProps, idx: number) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <React.Fragment key={idx}>
+            <StyledDivider orientation="vertical" />
+            <StyledGridItem item xs>
+              {section.title}
+              {section.subheader && (
+                <Typography variant="body4" color="rgba(13, 16, 48, 0.6)">
+                  {section.subheader}
+                </Typography>
+              )}
+            </StyledGridItem>
+          </React.Fragment>
+        ))}
+      </Grid>
+      {actions}
+    </StyledCardHeader>
+    {children}
+  </StyledCardHeaderContainer>
+);
 
 // Material UI Spacing system supports many props https://material-ui.com/system/spacing/#api
 // We can add more to this list as use cases arise
@@ -182,7 +178,7 @@ interface CardContentProps extends SpacingProps {
   maxHeight?: number | "none";
 }
 
-function CardContent({
+const CardContent = ({
   children,
   collapsible = false,
   collapseAction = {
@@ -191,7 +187,7 @@ function CardContent({
   },
   maxHeight = "none",
   ...props
-}: CardContentProps) {
+}: CardContentProps) => {
   const ref = React.useRef(null);
   const [showExpand, setShowExpand] = React.useState<boolean>(false);
   const [expanded, setExpanded] = React.useState<boolean>(true);
@@ -241,7 +237,7 @@ function CardContent({
       )}
     </BaseCardContent>
   );
-}
+};
 
 const StyledLandingCard = styled(Card)({
   border: "none",
@@ -270,27 +266,25 @@ export interface LandingCardProps extends Pick<CardActionAreaProps, "onClick"> {
   description: string;
 }
 
-export function LandingCard({ group, title, description, onClick, ...props }: LandingCardProps) {
-  return (
-    <StyledLandingCard {...props}>
-      <StyledCardActionArea onClick={onClick}>
-        <CardContent padding={4}>
-          <div className="header">
-            <div className="icon">
-              <Avatar>{group.charAt(0)}</Avatar>
-            </div>
-            <span>{group}</span>
+export const LandingCard = ({ group, title, description, onClick, ...props }: LandingCardProps) => (
+  <StyledLandingCard {...props}>
+    <StyledCardActionArea onClick={onClick}>
+      <CardContent padding={4}>
+        <div className="header">
+          <div className="icon">
+            <Avatar>{group.charAt(0)}</Avatar>
           </div>
-          <div>
-            <Typography variant="h3">{title}</Typography>
-            <Typography color="rgba(13, 16, 48, 0.6)" variant="body2">
-              {description}
-            </Typography>
-          </div>
-        </CardContent>
-      </StyledCardActionArea>
-    </StyledLandingCard>
-  );
-}
+          <span>{group}</span>
+        </div>
+        <div>
+          <Typography variant="h3">{title}</Typography>
+          <Typography color="rgba(13, 16, 48, 0.6)" variant="body2">
+            {description}
+          </Typography>
+        </div>
+      </CardContent>
+    </StyledCardActionArea>
+  </StyledLandingCard>
+);
 
 export { Card, CardContent, CardHeader };

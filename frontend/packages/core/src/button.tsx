@@ -151,7 +151,7 @@ export interface ButtonProps
 }
 
 /** A button with default themes based on use case. */
-function Button({ text, variant = "primary", ...props }: ButtonProps) {
+const Button = ({ text, variant = "primary", ...props }: ButtonProps) => {
   const palette = variantPalette(variant);
   const ButtonVariant = variant === "neutral" ? StyledBorderButton : StyledButton;
 
@@ -160,7 +160,7 @@ function Button({ text, variant = "primary", ...props }: ButtonProps) {
       {text}
     </ButtonVariant>
   );
-}
+};
 
 const StyledIconButton = styled(MuiIconButton)<{
   $palette: ButtonPalette;
@@ -228,13 +228,11 @@ export interface ButtonGroupProps {
 }
 
 /** A set of buttons to group together. */
-function ButtonGroup({ children, justify = "flex-end", border = "top" }: ButtonGroupProps) {
-  return (
-    <ButtonGroupContainer container justify={justify} data-border={border}>
-      {children}
-    </ButtonGroupContainer>
-  );
-}
+const ButtonGroup = ({ children, justify = "flex-end", border = "top" }: ButtonGroupProps) => (
+  <ButtonGroupContainer container justify={justify} data-border={border}>
+    {children}
+  </ButtonGroupContainer>
+);
 
 const StyledClipboardIconButton = styled(MuiIconButton)({
   color: "#000000",
@@ -254,7 +252,7 @@ export interface ClipboardButtonProps {
  *
  * When clicked a checkmark is briefly displayed.
  */
-function ClipboardButton({ text, tooltip = "" }: ClipboardButtonProps) {
+const ClipboardButton = ({ text, tooltip = "" }: ClipboardButtonProps) => {
   const [clicked, setClicked] = React.useState(false);
   React.useEffect(() => {
     if (clicked) {
@@ -279,6 +277,6 @@ function ClipboardButton({ text, tooltip = "" }: ClipboardButtonProps) {
       </StyledClipboardIconButton>
     </Tooltip>
   );
-}
+};
 
 export { Button, ButtonGroup, ClipboardButton, IconButton };

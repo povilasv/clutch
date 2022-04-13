@@ -17,32 +17,28 @@ export default {
   component: Table,
 } as Meta;
 
-function Template({ row, ...props }: TableProps & { row: React.ReactElement }) {
-  return (
-    <div style={{ maxHeight: "300px", display: "flex" }}>
-      <Table {...props} columns={["Column 1", "Column 2", "Column 3", "Column 4", "Column 5"]}>
-        {
-          // eslint-disable-next-line react/no-array-index-key
-          [...Array(10)].map((_, index: number) => React.cloneElement(row, { key: index }))
-        }
-      </Table>
-    </div>
-  );
-}
+const Template = ({ row, ...props }: TableProps & { row: React.ReactElement }) => (
+  <div style={{ maxHeight: "300px", display: "flex" }}>
+    <Table {...props} columns={["Column 1", "Column 2", "Column 3", "Column 4", "Column 5"]}>
+      {
+        // eslint-disable-next-line react/no-array-index-key
+        [...Array(10)].map((_, index: number) => React.cloneElement(row, { key: index }))
+      }
+    </Table>
+  </div>
+);
 
-function PrimaryTableRow(props: TableRowProps) {
-  return (
-    <TableRow {...props}>
-      <div>Value 1</div>
-      <div>Value 2</div>
-      <div>Value 3</div>
-      <div>Value 4</div>
-      <div>Value 5</div>
-    </TableRow>
-  );
-}
+const PrimaryTableRow = (props: TableRowProps) => (
+  <TableRow {...props}>
+    <div>Value 1</div>
+    <div>Value 2</div>
+    <div>Value 3</div>
+    <div>Value 4</div>
+    <div>Value 5</div>
+  </TableRow>
+);
 
-function IncompleteTableRow(props: TableRowProps) {
+const IncompleteTableRow = (props: TableRowProps) => {
   let data;
   return (
     <TableRow {...props}>
@@ -53,24 +49,22 @@ function IncompleteTableRow(props: TableRowProps) {
       {data}
     </TableRow>
   );
-}
+};
 
-function ActionableTableRow(props: TableRowProps) {
-  return (
-    <TableRow {...props}>
-      <div>Value 1</div>
-      <div>Value 2</div>
-      <div>Value 3</div>
-      <div>Value 4</div>
-      <div>Value 5</div>
-      <TableRowActions>
-        <TableRowAction icon={<EmojiPeopleIcon />} onClick={action("row-action")}>
-          Take Action
-        </TableRowAction>
-      </TableRowActions>
-    </TableRow>
-  );
-}
+const ActionableTableRow = (props: TableRowProps) => (
+  <TableRow {...props}>
+    <div>Value 1</div>
+    <div>Value 2</div>
+    <div>Value 3</div>
+    <div>Value 4</div>
+    <div>Value 5</div>
+    <TableRowActions>
+      <TableRowAction icon={<EmojiPeopleIcon />} onClick={action("row-action")}>
+        Take Action
+      </TableRowAction>
+    </TableRowActions>
+  </TableRow>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

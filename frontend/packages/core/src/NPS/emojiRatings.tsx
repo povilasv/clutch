@@ -32,13 +32,13 @@ const getKey = (map, val): string => Object.keys(map).find(key => map[key] === v
  * @param setRating function which will return the given selected rating
  * @returns rendered EmojiRatings component
  */
-function EmojiRatings({
+const EmojiRatings = ({
   ratings = [],
   setRating,
   placement = "top",
   buttonSize = "small",
   emojiSize = "medium",
-}: EmojiRatingsProps) {
+}: EmojiRatingsProps) => {
   const [selectedRating, selectRating] = useState<Rating>(null);
 
   const StyledIconButton = styled(IconButton)<{
@@ -85,6 +85,6 @@ function EmojiRatings({
       })}
     </>
   );
-}
+};
 
 export default EmojiRatings;

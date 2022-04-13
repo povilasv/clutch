@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 import type { TooltipProps as MuiTooltipProps } from "@material-ui/core";
 import { Tooltip as MuiTooltip } from "@material-ui/core";
 
-function BaseTooltip({ className, ...props }: MuiTooltipProps) {
-  return <MuiTooltip classes={{ tooltip: className }} {...props} />;
-}
+const BaseTooltip = ({ className, ...props }: MuiTooltipProps) => (
+  <MuiTooltip classes={{ tooltip: className }} {...props} />
+);
 
 // TODO: sync with Design on margins for each possible placement
 const StyledTooltip = styled(BaseTooltip)((props: { maxwidth?: string }) => ({
@@ -35,13 +35,13 @@ export interface TooltipProps extends Pick<MuiTooltipProps, "interactive" | "pla
   title: React.ReactNode;
 }
 
-function Tooltip({ children, maxWidth = "300px", title, ...props }: TooltipProps) {
+const Tooltip = ({ children, maxWidth = "300px", title, ...props }: TooltipProps) => {
   return (
     <StyledTooltip title={title} maxwidth={maxWidth} {...props}>
       {children}
     </StyledTooltip>
   );
-}
+};
 
 // sets the spacing between multiline content
 const TooltipContainer = styled.div({

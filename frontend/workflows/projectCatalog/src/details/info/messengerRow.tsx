@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { LinkText } from "../helpers";
 
-function MessengerRow({ projectData }: { projectData: IClutch.core.project.v1.IProject }) {
+const MessengerRow = ({ projectData }: { projectData: IClutch.core.project.v1.IProject }) => {
   const [text, setText] = React.useState<string>();
   const [link, setLink] = React.useState<string>();
   const [icon, setIcon] = React.useState<IconProp>(faComment);
@@ -37,6 +37,6 @@ function MessengerRow({ projectData }: { projectData: IClutch.core.project.v1.IP
       <Grid item>{text && <LinkText text={text} link={link} />}</Grid>
     </Grid>
   );
-}
+};
 
 export default MessengerRow;

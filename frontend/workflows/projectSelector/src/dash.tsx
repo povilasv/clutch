@@ -104,7 +104,7 @@ const timeRangeReducer = (state: TimeRangeState, action: TimeRangeAction): TimeR
   }
 };
 
-function Dash({ children, onError }: DashProps) {
+const Dash = ({ children, onError }: DashProps) => {
   const [state, dispatch] = React.useReducer(dashReducer, initialState);
   const [timelineState, timelineDispatch] = React.useReducer(timelineReducer, initialTimelineState);
   const [timeRangeState, timeRangeDispatch] = React.useReducer(
@@ -151,6 +151,6 @@ function Dash({ children, onError }: DashProps) {
       </ProjectSelectorDispatchContext.Provider>
     </Box>
   );
-}
+};
 
 export default Dash;

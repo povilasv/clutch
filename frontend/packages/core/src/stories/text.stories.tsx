@@ -8,9 +8,7 @@ export default {
   component: Code,
 } as Meta;
 
-function Template({ value }) {
-  return <Code>{value}</Code>;
-}
+const Template = ({ value }) => <Code>{value}</Code>;
 
 export const Primary = Template.bind({});
 Primary.args = {

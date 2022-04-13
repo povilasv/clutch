@@ -11,9 +11,7 @@ export default {
   component: NotePanel,
 } as Meta;
 
-function Template(props: NotePanelProps) {
-  return <NotePanel {...props} />;
-}
+const Template = (props: NotePanelProps) => <NotePanel {...props} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -39,7 +37,7 @@ Primary.args = {
   ],
 };
 
-function CompositeTemplate(props: NotePanelProps) {
+const CompositeTemplate = (props: NotePanelProps) => {
   const docsUrl = "https://clutch.sh/docs";
   return (
     <NotePanel {...props}>
@@ -53,6 +51,6 @@ function CompositeTemplate(props: NotePanelProps) {
       </Note>
     </NotePanel>
   );
-}
+};
 
 export const WithChildren = CompositeTemplate.bind({});

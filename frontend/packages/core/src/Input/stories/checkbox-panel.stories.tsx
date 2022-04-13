@@ -12,9 +12,7 @@ export default {
   },
 } as Meta;
 
-function Template(props: CheckboxPanelProps) {
-  return <CheckboxPanel {...props} />;
-}
+const Template = (props: CheckboxPanelProps) => <CheckboxPanel {...props} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

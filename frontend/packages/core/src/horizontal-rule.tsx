@@ -1,19 +1,17 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 
-function HorizontalRuleBase({ children, ...props }: HorizontalRuleProps) {
-  return (
-    <div {...props}>
-      <div className="line">
-        <span />
-      </div>
-      {React.Children.count(children) > 0 && <div className="content">{children}</div>}
-      <div className="line">
-        <span />
-      </div>
+const HorizontalRuleBase = ({ children, ...props }: HorizontalRuleProps) => (
+  <div {...props}>
+    <div className="line">
+      <span />
     </div>
-  );
-}
+    {React.Children.count(children) > 0 && <div className="content">{children}</div>}
+    <div className="line">
+      <span />
+    </div>
+  </div>
+);
 
 export type HorizontalRuleProps = {
   children: React.ReactNode;
@@ -46,8 +44,8 @@ const StyledHorizontalRule = styled(HorizontalRuleBase)({
   },
 });
 
-export function HorizontalRule({ children }: HorizontalRuleProps) {
-  return <StyledHorizontalRule>{children}</StyledHorizontalRule>;
-}
+export const HorizontalRule = ({ children }: HorizontalRuleProps) => (
+  <StyledHorizontalRule>{children}</StyledHorizontalRule>
+);
 
 export default HorizontalRule;

@@ -7,14 +7,14 @@ describe("Manager Default State", () => {
   it("does not share an initial state reference", () => {
     let manager;
 
-    function TestComponent() {
+    const TestComponent = () => {
       manager = useDataLayoutManager({
         a: {},
         b: {},
       });
 
       return null;
-    }
+    };
 
     renderer.create(<TestComponent />);
 

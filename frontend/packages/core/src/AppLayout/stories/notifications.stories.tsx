@@ -16,13 +16,11 @@ const Grid = styled(MuiGrid)({
   backgroundColor: "#131C5F",
 });
 
-function Template(props: NotificationsProp) {
-  return (
-    <Grid container alignItems="center" justify="center">
-      <Notifications {...props} />
-    </Grid>
-  );
-}
+const Template = (props: NotificationsProp) => (
+  <Grid container alignItems="center" justify="center">
+    <Notifications {...props} />
+  </Grid>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

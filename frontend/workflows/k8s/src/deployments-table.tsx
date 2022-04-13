@@ -13,7 +13,7 @@ const DeploymentsContainer = styled.div({
   maxHeight: "50vh",
 });
 
-function DeploymentTable() {
+const DeploymentTable = () => {
   const deploymentListData = useDataLayout("deploymentListData", { hydrate: false });
   const deployments = deploymentListData.displayValue()?.deployments as IClutch.k8s.v1.Deployment[];
 
@@ -48,6 +48,6 @@ function DeploymentTable() {
       </Table>
     </DeploymentsContainer>
   );
-}
+};
 
 export default DeploymentTable;

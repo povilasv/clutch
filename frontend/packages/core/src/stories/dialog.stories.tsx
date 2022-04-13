@@ -12,7 +12,7 @@ export default {
   component: Dialog,
 } as Meta;
 
-function Template({ content, open, ...props }: DialogProps & { content: React.ReactNode }) {
+const Template = ({ content, open, ...props }: DialogProps & { content: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(open);
 
   return (
@@ -27,7 +27,7 @@ function Template({ content, open, ...props }: DialogProps & { content: React.Re
       </Dialog>
     </>
   );
-}
+};
 
 export const Primary = Template.bind({});
 Primary.args = {

@@ -74,48 +74,44 @@ const BodyContainer = styled("div")({
   paddingLeft: "4px",
 });
 
-function CardTitle({ title, titleIcon, endAdornment }: CardTitleProps) {
-  return (
-    <>
-      {title && (
-        <StyledTitleContainer container item xs={endAdornment ? 9 : 12} spacing={1}>
-          {titleIcon && <Grid item>{titleIcon}</Grid>}
-          <StyledTitle item>
-            <Typography variant="h4">{title}</Typography>
-          </StyledTitle>
-        </StyledTitleContainer>
-      )}
-      {endAdornment && (
-        <Grid
-          container
-          item
-          direction="row"
-          xs={3}
-          spacing={1}
-          alignItems="center"
-          justify="flex-end"
-        >
-          {endAdornment}
-        </Grid>
-      )}
-    </>
-  );
-}
+const CardTitle = ({ title, titleIcon, endAdornment }: CardTitleProps) => (
+  <>
+    {title && (
+      <StyledTitleContainer container item xs={endAdornment ? 9 : 12} spacing={1}>
+        {titleIcon && <Grid item>{titleIcon}</Grid>}
+        <StyledTitle item>
+          <Typography variant="h4">{title}</Typography>
+        </StyledTitle>
+      </StyledTitleContainer>
+    )}
+    {endAdornment && (
+      <Grid
+        container
+        item
+        direction="row"
+        xs={3}
+        spacing={1}
+        alignItems="center"
+        justify="flex-end"
+      >
+        {endAdornment}
+      </Grid>
+    )}
+  </>
+);
 
-function CardBody({ loading, error, children }: CardBodyProps) {
-  return (
-    <>
-      {loading && (
-        <StyledProgressContainer>
-          <LinearProgress color="secondary" />
-        </StyledProgressContainer>
-      )}
-      <BodyContainer>{error ? <Error subject={error} /> : children}</BodyContainer>
-    </>
-  );
-}
+const CardBody = ({ loading, error, children }: CardBodyProps) => (
+  <>
+    {loading && (
+      <StyledProgressContainer>
+        <LinearProgress color="secondary" />
+      </StyledProgressContainer>
+    )}
+    <BodyContainer>{error ? <Error subject={error} /> : children}</BodyContainer>
+  </>
+);
 
-function BaseCard({
+const BaseCard = ({
   children,
   title,
   titleIcon,
@@ -124,7 +120,7 @@ function BaseCard({
   loadingIndicator = true,
   error,
   ...props
-}: CardProps) {
+}: CardProps) => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [cardError, setCardError] = React.useState<ClutchError | undefined>(undefined);
 
@@ -170,14 +166,10 @@ function BaseCard({
       <CardBody loading={loading || cardLoading} error={error || cardError} {...props} />
     </StyledCard>
   );
-}
+};
 
-function DynamicCard(props: BaseCardProps) {
-  return <BaseCard type={CardType.DYNAMIC} {...props} />;
-}
+const DynamicCard = (props: BaseCardProps) => <BaseCard type={CardType.DYNAMIC} {...props} />;
 
-function MetaCard(props: BaseCardProps) {
-  return <BaseCard type={CardType.METADATA} {...props} />;
-}
+const MetaCard = (props: BaseCardProps) => <BaseCard type={CardType.METADATA} {...props} />;
 
 export { CardType, DynamicCard, MetaCard };

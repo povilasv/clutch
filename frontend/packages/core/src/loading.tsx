@@ -23,13 +23,11 @@ const Overlay = styled(Paper)`
   justify-content: center;
   align-items: center;
 `;
-function LoadingOveray() {
-  return (
-    <Overlay square elevation={0}>
-      <LoadingSpinner />
-    </Overlay>
-  );
-}
+const LoadingOveray = () => (
+  <Overlay square elevation={0}>
+    <LoadingSpinner />
+  </Overlay>
+);
 
 interface LoadableProps {
   isLoading: boolean;

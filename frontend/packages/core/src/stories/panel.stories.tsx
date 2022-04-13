@@ -9,13 +9,11 @@ export default {
   component: ExpansionPanel,
 } as Meta;
 
-function Template(props: ExpansionPanelProps) {
-  return (
-    <ExpansionPanel {...props}>
-      <img alt="clutch logo" src="https://clutch.sh/img/navigation/logo.svg" height="100px" />
-    </ExpansionPanel>
-  );
-}
+const Template = (props: ExpansionPanelProps) => (
+  <ExpansionPanel {...props}>
+    <img alt="clutch logo" src="https://clutch.sh/img/navigation/logo.svg" height="100px" />
+  </ExpansionPanel>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

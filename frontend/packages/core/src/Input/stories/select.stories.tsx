@@ -13,9 +13,7 @@ export default {
   },
 } as Meta;
 
-function Template(props: SelectProps) {
-  return <Select name="storybookDemo" {...props} />;
-}
+const Template = (props: SelectProps) => <Select name="storybookDemo" {...props} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

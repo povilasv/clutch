@@ -12,18 +12,16 @@ export default {
   },
 } as Meta;
 
-function Template({ tabCount, value, variant }: TabsProps & { tabCount: number }) {
-  return (
-    <Tabs value={value - 1} variant={variant}>
-      {[...Array(tabCount)].map((_, index: number) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Tab key={index} label={`Tab ${index + 1}`} value={index}>
-          <div>Tab{index + 1} Content</div>
-        </Tab>
-      ))}
-    </Tabs>
-  );
-}
+const Template = ({ tabCount, value, variant }: TabsProps & { tabCount: number }) => (
+  <Tabs value={value - 1} variant={variant}>
+    {[...Array(tabCount)].map((_, index: number) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <Tab key={index} label={`Tab ${index + 1}`} value={index}>
+        <div>Tab{index + 1} Content</div>
+      </Tab>
+    ))}
+  </Tabs>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

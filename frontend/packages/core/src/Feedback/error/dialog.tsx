@@ -10,7 +10,7 @@ interface ErrorDetailsDialogProps {
   onClose: () => void;
 }
 
-function ErrorDetailsDialog({ error, open, onClose }: ErrorDetailsDialogProps) {
+const ErrorDetailsDialog = ({ error, open, onClose }: ErrorDetailsDialogProps) => {
   const prettyPrintError = JSON.stringify(error, undefined, 2);
 
   return (
@@ -21,6 +21,6 @@ function ErrorDetailsDialog({ error, open, onClose }: ErrorDetailsDialogProps) {
       </DialogContent>
     </Dialog>
   );
-}
+};
 
 export default ErrorDetailsDialog;

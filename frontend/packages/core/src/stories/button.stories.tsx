@@ -12,9 +12,7 @@ export default {
   },
 } as Meta;
 
-function Template(props: ButtonProps) {
-  return <Button {...props} />;
-}
+const Template = (props: ButtonProps) => <Button {...props} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

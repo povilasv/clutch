@@ -9,9 +9,7 @@ export default {
   component: Note,
 } as Meta;
 
-function Template(props: NoteProps) {
-  return <Note {...props}>This is a note</Note>;
-}
+const Template = (props: NoteProps) => <Note {...props}>This is a note</Note>;
 
 export const Success = Template.bind({});
 Success.args = {

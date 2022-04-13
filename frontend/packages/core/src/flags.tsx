@@ -81,7 +81,7 @@ const FeatureOff = ({ children }: SimpleFeatureFlagStateProps) => <>{children}</
  * A feature flag wrapper that evaluates a binary value of a specified flag to determine
  * if it's children should be shown.
  */
-function SimpleFeatureFlag({ feature, children }: SimpleFeatureFlagProps) {
+const SimpleFeatureFlag = ({ feature, children }: SimpleFeatureFlagProps) => {
   const cachedFlags = JSON.parse(sessionStorage.getItem("featureFlags"));
   const [flags, setFlags] = React.useState(cachedFlags?.flags || {});
   const [featureEnabled, setFeatureEnabled] = React.useState(false);
@@ -113,6 +113,6 @@ function SimpleFeatureFlag({ feature, children }: SimpleFeatureFlagProps) {
   ));
 
   return <>{statefulChildren}</>;
-}
+};
 
 export { FEATURE_FLAG_POLL_RATE, featureFlags, FeatureOff, FeatureOn, SimpleFeatureFlag };

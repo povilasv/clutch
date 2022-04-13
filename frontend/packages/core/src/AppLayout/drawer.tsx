@@ -97,14 +97,14 @@ interface GroupProps {
   children: React.ReactElement<PopperItemProps> | React.ReactElement<PopperItemProps>[];
 }
 
-function Group({
+const Group = ({
   heading,
   open = false,
   selected = false,
   updateOpenGroup,
   closeGroup,
   children,
-}: GroupProps) {
+}: GroupProps) => {
   const anchorRef = React.useRef(null);
 
   // n.b. if a Workflow Grouping has no workflows in it don't display it even if
@@ -135,7 +135,7 @@ function Group({
       </GroupListItem>
     </GroupList>
   );
-}
+};
 
 interface LinkProps {
   to: string;

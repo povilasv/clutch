@@ -53,7 +53,7 @@ export interface TabProps extends Pick<MuiTabProps, "label" | "selected" | "valu
   startAdornment?: React.ReactNode;
 }
 
-export function Tab({ onClick, label, startAdornment, ...props }: TabProps) {
+export const Tab = ({ onClick, label, startAdornment, ...props }: TabProps) => {
   const tabProps = { ...props };
   delete tabProps.children;
   const onClickMiddleware = (e: any) => {
@@ -72,7 +72,7 @@ export function Tab({ onClick, label, startAdornment, ...props }: TabProps) {
     );
   }
   return <StyledTab color="primary" onClick={onClickMiddleware} label={finalLabel} {...tabProps} />;
-}
+};
 
 const TabPanel = styled(MuiTabPanel)({
   padding: "0",
@@ -83,7 +83,7 @@ export interface TabsProps extends Pick<MuiTabsProps, "value" | "variant"> {
   children: React.ReactElement<TabProps> | React.ReactElement<TabProps>[];
 }
 
-export function Tabs({ children, value, variant }: TabsProps) {
+export const Tabs = ({ children, value, variant }: TabsProps) => {
   const [selectedIndex, setSelectedIndex] = React.useState((value || 0).toString());
   const onChangeMiddleware = (_, v: string) => {
     setSelectedIndex(v);
@@ -103,4 +103,4 @@ export function Tabs({ children, value, variant }: TabsProps) {
       </TabContext>
     </div>
   );
-}
+};

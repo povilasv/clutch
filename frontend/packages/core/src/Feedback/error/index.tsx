@@ -49,7 +49,7 @@ export interface ErrorProps {
   onRetry?: () => void;
 }
 
-function Error({ subject: error, onRetry }: ErrorProps) {
+const Error = ({ subject: error, onRetry }: ErrorProps) => {
   const action =
     onRetry !== undefined ? (
       <IconButton aria-label="retry" color="inherit" size="small" onClick={() => onRetry()}>
@@ -96,6 +96,6 @@ function Error({ subject: error, onRetry }: ErrorProps) {
       {hasDetails && <ErrorDetails error={error} />}
     </div>
   );
-}
+};
 
 export default Error;

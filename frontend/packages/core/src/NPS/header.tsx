@@ -79,7 +79,7 @@ export const generateFeedbackTypes = (workflows: Workflow[]): SelectOption[] => 
   return feedbackTypes;
 };
 
-function HeaderFeedback() {
+const HeaderFeedback = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const anchorRef = React.useRef(null);
   const { workflows } = useAppContext();
@@ -131,6 +131,6 @@ function HeaderFeedback() {
       </Popper>
     </>
   );
-}
+};
 
 export default HeaderFeedback;

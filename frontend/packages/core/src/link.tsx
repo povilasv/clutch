@@ -27,16 +27,14 @@ export interface LinkProps extends Pick<MuiLinkProps, "href" | "children"> {
   textTransform?: TextTransform;
 }
 
-export function Link({ href, textTransform = "none", children, ...props }: LinkProps) {
-  return (
-    <StyledLink
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      $textTransform={textTransform}
-      {...props}
-    >
-      {children}
-    </StyledLink>
-  );
-}
+export const Link = ({ href, textTransform = "none", children, ...props }: LinkProps) => (
+  <StyledLink
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    $textTransform={textTransform}
+    {...props}
+  >
+    {children}
+  </StyledLink>
+);

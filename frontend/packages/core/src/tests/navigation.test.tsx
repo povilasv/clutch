@@ -13,17 +13,17 @@ jest.mock("react-router-dom", () => ({
 describe("convertSearchParam", () => {
   it("handles empty objects", () => {
     const result = convertSearchParam(new URLSearchParams({}));
-    expect(result).toBe("");
+    expect(result).toEqual("");
   });
 
   it("prepends ?", () => {
     const result = convertSearchParam(new URLSearchParams({ foo: "bar" }));
-    expect(result).toBe("?foo=bar");
+    expect(result).toEqual("?foo=bar");
   });
 
   it("joins entries", () => {
     const result = convertSearchParam(new URLSearchParams({ foo: "bar", test: "42" }));
-    expect(result).toBe("?foo=bar&test=42");
+    expect(result).toEqual("?foo=bar&test=42");
   });
 });
 

@@ -8,10 +8,8 @@ export default {
   component: Paper,
 } as Meta;
 
-export function Primary() {
-  return (
-    <Paper>
-      <div>Some text in paper</div>
-    </Paper>
-  );
-}
+export const Primary = () => (
+  <Paper>
+    <div>Some text in paper</div>
+  </Paper>
+);

@@ -10,7 +10,7 @@ const CronsContainer = styled.div({
   maxHeight: "50vh",
 });
 
-function CronTable() {
+const CronTable = () => {
   const cronListData = useDataLayout("cronListData", { hydrate: false });
   const crons = cronListData.displayValue()?.cronJobs as IClutch.k8s.v1.CronJob[];
 
@@ -38,6 +38,6 @@ function CronTable() {
       </Table>
     </CronsContainer>
   );
-}
+};
 
 export default CronTable;

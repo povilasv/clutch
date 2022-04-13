@@ -16,9 +16,7 @@ export default {
   },
 };
 
-function Template(props: ChipProps) {
-  return <Chip {...props} />;
-}
+const Template = (props: ChipProps) => <Chip {...props} />;
 
 export const ErrorChip = Template.bind({});
 ErrorChip.args = {

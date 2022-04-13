@@ -12,9 +12,7 @@ export default {
   },
 } as Meta;
 
-function Template(props: RadioGroupProps) {
-  return <RadioGroup {...props} />;
-}
+const Template = (props: RadioGroupProps) => <RadioGroup {...props} />;
 
 export const Primary = Template.bind({});
 const options = [{ label: "red" }, { label: "green" }, { label: "blue" }];

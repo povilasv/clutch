@@ -33,22 +33,20 @@ interface CodeProps {
   showCopyButton?: boolean;
 }
 
-function Code({ children, showCopyButton = true }: CodeProps) {
-  return (
-    <Pre>
-      {showCopyButton && (
-        // TODO: Figure out a more permanent fix for the copy button
-        <CopyButtonContainer container justify="flex-end">
-          <Fab variant="round" size="small">
-            <ClipboardButton text={children} />
-          </Fab>
-        </CopyButtonContainer>
-      )}
-      <ContentContainer justify="flex-start" alignItems="center">
-        {children}
-      </ContentContainer>
-    </Pre>
-  );
-}
+const Code = ({ children, showCopyButton = true }: CodeProps) => (
+  <Pre>
+    {showCopyButton && (
+      // TODO: Figure out a more permanent fix for the copy button
+      <CopyButtonContainer container justify="flex-end">
+        <Fab variant="round" size="small">
+          <ClipboardButton text={children} />
+        </Fab>
+      </CopyButtonContainer>
+    )}
+    <ContentContainer justify="flex-start" alignItems="center">
+      {children}
+    </ContentContainer>
+  </Pre>
+);
 
 export default Code;

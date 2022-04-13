@@ -15,7 +15,7 @@ export default {
   component: Stepper,
 } as Meta;
 
-function PrimaryTemplate({ stepCount, activeStep }: StepperProps & { stepCount: number }) {
+const PrimaryTemplate = ({ stepCount, activeStep }: StepperProps & { stepCount: number }) => {
   const [curStep, setCurStep] = React.useState(activeStep || 0);
 
   const handleNext = () => {
@@ -52,9 +52,9 @@ function PrimaryTemplate({ stepCount, activeStep }: StepperProps & { stepCount: 
       </div>
     </>
   );
-}
+};
 
-function FailureTemplate({ failedStep = 2, activeStep }: StepperProps & { failedStep: number }) {
+const FailureTemplate = ({ failedStep = 2, activeStep }: StepperProps & { failedStep: number }) => {
   const [curStep, setCurStep] = React.useState(activeStep || 0);
   const stepCount = 4;
 
@@ -97,7 +97,7 @@ function FailureTemplate({ failedStep = 2, activeStep }: StepperProps & { failed
       </div>
     </>
   );
-}
+};
 
 export const Primary = PrimaryTemplate.bind({});
 Primary.args = {

@@ -27,13 +27,11 @@ export default {
   component: MetadataTable,
 } as Meta;
 
-function Template(props: MetadataTableProps) {
-  return (
-    <div style={{ display: "flex", maxWidth: "800px" }}>
-      <MetadataTable {...props} />
-    </div>
-  );
-}
+const Template = (props: MetadataTableProps) => (
+  <div style={{ display: "flex", maxWidth: "800px" }}>
+    <MetadataTable {...props} />
+  </div>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

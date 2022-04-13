@@ -10,14 +10,12 @@ export default {
   component: ButtonGroup,
 } as Meta;
 
-function Template({ children, ...props }: ButtonGroupProps) {
-  return (
-    <ButtonGroup {...props}>
-      <Button text="Back" variant="neutral" onClick={action("onClick event")} />
-      {children as React.ReactElement<ButtonProps>}
-    </ButtonGroup>
-  );
-}
+const Template = ({ children, ...props }: ButtonGroupProps) => (
+  <ButtonGroup {...props}>
+    <Button text="Back" variant="neutral" onClick={action("onClick event")} />
+    {children as React.ReactElement<ButtonProps>}
+  </ButtonGroup>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

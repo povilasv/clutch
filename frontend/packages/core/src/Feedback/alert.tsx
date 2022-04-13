@@ -90,16 +90,8 @@ export interface AlertPanelProps {
   children: React.ReactElement<AlertProps> | React.ReactElement<AlertProps>[];
 }
 
-export function AlertPanel({ direction = "column", children }: AlertPanelProps) {
-  return (
-    <Grid
-      container
-      direction={direction}
-      justify="center"
-      alignContent="space-between"
-      wrap="nowrap"
-    >
-      {children}
-    </Grid>
-  );
-}
+export const AlertPanel = ({ direction = "column", children }: AlertPanelProps) => (
+  <Grid container direction={direction} justify="center" alignContent="space-between" wrap="nowrap">
+    {children}
+  </Grid>
+);

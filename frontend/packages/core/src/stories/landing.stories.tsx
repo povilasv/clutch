@@ -20,8 +20,6 @@ export default {
   component: Landing,
 } as Meta;
 
-function Template() {
-  return <Landing />;
-}
+const Template = () => <Landing />;
 
 export const Primary = Template.bind({});

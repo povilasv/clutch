@@ -16,6 +16,7 @@ const Title = styled("div")({
 });
 
 interface ServerInformation {
+  // eslint-disable-next-line camelcase
   command_line_options: {
     [key: string]: string;
   };

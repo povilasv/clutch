@@ -69,8 +69,6 @@ const SwitchContainer = styled(MuiSwitch)({
 
 export interface SwitchProps extends Pick<MuiSwitchProps, "checked" | "disabled" | "onChange"> {}
 
-function Switch({ ...props }: SwitchProps) {
-  return <SwitchContainer color="default" {...props} />;
-}
+const Switch = ({ ...props }: SwitchProps) => <SwitchContainer color="default" {...props} />;
 
 export default Switch;

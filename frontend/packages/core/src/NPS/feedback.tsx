@@ -68,7 +68,7 @@ const StyledTextField = styled(TextField)<{ $origin: Origin }>(
   })
 );
 
-function FeedbackAlert() {
+const FeedbackAlert = () => {
   const AlertProps = {
     iconMapping: {
       info: <MuiSuccessIcon style={{ color: "#3548d4" }} />,
@@ -84,7 +84,7 @@ function FeedbackAlert() {
       <Typography variant="subtitle3">Thank you for your feedback!</Typography>
     </Alert>
   );
-}
+};
 export const FEEDBACK_MAX_LENGTH = 280;
 /**
  * NPS feedback component which is the base for both Wizard and Anytime.
@@ -94,7 +94,7 @@ export const FEEDBACK_MAX_LENGTH = 280;
  * @param opts Available feedback options
  * @returns NPSFeedback component
  */
-function NPSFeedback({ origin = "HEADER", onSubmit, feedbackTypes }: FeedbackOptions) {
+const NPSFeedback = ({ origin = "HEADER", onSubmit, feedbackTypes }: FeedbackOptions) => {
   const [hasSubmit, setHasSubmit] = useState<boolean>(false);
   const [selectedRating, setSelectedRating] = useState<Rating>(null);
   const [freeformFeedback, setFreeformFeedback] = useState<string>("");
@@ -271,6 +271,6 @@ function NPSFeedback({ origin = "HEADER", onSubmit, feedbackTypes }: FeedbackOpt
       </MuiGrid>
     </form>
   );
-}
+};
 
 export default NPSFeedback;

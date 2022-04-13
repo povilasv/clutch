@@ -9,9 +9,7 @@ export default {
   component: Card,
 } as Meta;
 
-function Template(props: CardProps) {
-  return <Card {...props} />;
-}
+const Template = (props: CardProps) => <Card {...props} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
