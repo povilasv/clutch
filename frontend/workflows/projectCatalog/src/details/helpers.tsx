@@ -50,7 +50,7 @@ const setMilliseconds = (timestamp?: number | Long | null): number => {
   return ts.setUTCMilliseconds(parseTimestamp(timestamp));
 };
 
-const LastEvent = ({ time }: { time: number }) => {
+const LastEvent = ({ time, ...props }: { time: number }) => {
   return time ? (
     <>
       <Grid item>
