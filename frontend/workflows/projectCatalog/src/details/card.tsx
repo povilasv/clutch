@@ -74,13 +74,13 @@ const BodyContainer = styled("div")({
   paddingLeft: "4px",
 });
 
-const CardTitle = ({ title, titleIcon, endAdornment }: CardTitleProps) => (
-  <>
+const CardTitle = ({ title, titleVariant = "h4", titleIcon, endAdornment }: CardTitleProps) => (
+  <Grid container item direction="row" alignItems="flex-start" wrap="nowrap">
     {title && (
       <StyledTitleContainer container item xs={endAdornment ? 9 : 12} spacing={1}>
         {titleIcon && <Grid item>{titleIcon}</Grid>}
         <StyledTitle item>
-          <Typography variant="h4">{title}</Typography>
+          <Typography variant={titleVariant}>{title}</Typography>
         </StyledTitle>
       </StyledTitleContainer>
     )}
@@ -97,12 +97,12 @@ const CardTitle = ({ title, titleIcon, endAdornment }: CardTitleProps) => (
         {endAdornment}
       </Grid>
     )}
-  </>
+  </Grid>
 );
 
-const CardBody = ({ loading, error, children }: CardBodyProps) => (
+const CardBody = ({ loading, loadingIndicator = true, error, children }: CardBodyProps) => (
   <>
-    {loading && (
+    {loadingIndicator && loading && (
       <StyledProgressContainer>
         <LinearProgress color="secondary" />
       </StyledProgressContainer>
@@ -111,17 +111,8 @@ const CardBody = ({ loading, error, children }: CardBodyProps) => (
   </>
 );
 
-const BaseCard = ({
-  children,
-  title,
-  titleIcon,
-  endAdornment,
-  loading,
-  loadingIndicator = true,
-  error,
-  ...props
-}: CardProps) => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+const BaseCard = ({ loading, error, ...props }: CardProps) => {
+  const [cardLoading, setCardLoading] = React.useState<boolean>(false);
   const [cardError, setCardError] = React.useState<ClutchError | undefined>(undefined);
 
   const fetchData = () => {
