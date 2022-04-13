@@ -13,5 +13,6 @@ module.exports = {
     "\\.(css)$": "identity-obj-proxy",
   },
   setupFilesAfterEnv: ["@clutch-sh/tools/jest.setup.js"],
+  testEnvironment: "jsdom",
   verbose: true,
 };
