@@ -150,10 +150,13 @@ const StepIcon: React.FC<StepIconProps> = ({ index, variant }) => {
   );
 };
 
+// TODO (jslaughter): Revisit how these props are used
+/* eslint-disable react/no-unused-prop-types */
 export interface StepProps {
   label: string;
   error?: boolean;
 }
+/* eslint-enable react/no-unused-prop-types */
 
 const Step: React.FC<StepProps> = ({ children }) => <>{children}</>;
 
@@ -161,6 +164,12 @@ export interface StepperProps {
   activeStep: number;
   children?: React.ReactElement<StepProps>[] | React.ReactElement<StepProps>;
 }
+
+const StepLabel: React.FC<{ iconProps: StepIconProps }> = ({ children, iconProps }) => {
+  const StepIconComponent = React.useCallback(() => <StepIcon {...iconProps} />, []);
+
+  return <MuiStepLabel StepIconComponent={StepIconComponent}>{children}</MuiStepLabel>;
+};
 
 function Stepper({ activeStep, children }: StepperProps) {
   return (
@@ -179,9 +188,7 @@ function Stepper({ activeStep, children }: StepperProps) {
 
           return (
             <MuiStep key={step.props.label}>
-              <MuiStepLabel StepIconComponent={() => <StepIcon {...stepProps} />}>
-                {step.props.label ?? `Step ${idx + 1}`}
-              </MuiStepLabel>
+              <StepLabel iconProps={stepProps}>{step.props.label ?? `Step ${idx + 1}`}</StepLabel>
             </MuiStep>
           );
         })}

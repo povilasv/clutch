@@ -34,7 +34,8 @@ const featureFlags = (): Promise<FeatureFlags> => {
     })
     .catch((error: ClutchError) => {
       // TODO: add instrumentation here
-      console.warn("failed to fetch flags: ", error); // eslint-disable-line
+      // eslint-disable-next-line no-console
+      console.warn("failed to fetch flags: ", error);
       return cachedFlags?.flags || {};
     });
 };
@@ -61,26 +62,20 @@ interface GenericSimpleFeatureFlagStateProps {
  * A generic simple feature flag component. This exists to mask the feature enabled
  * state as a prop on the exposed On/Off components.
  */
-function GenericSimpleFeatureFlagState({
+const GenericSimpleFeatureFlagState = ({
   children,
   enabled,
   expectedState,
-}: GenericSimpleFeatureFlagStateProps) {
-  return enabled === expectedState && children;
-}
+}: GenericSimpleFeatureFlagStateProps) => <>{enabled === expectedState && children}</>;
 
 interface SimpleFeatureFlagStateProps {
   /** Children that will be rendered if the feature is on/off */
   children: React.ReactNode;
 }
 
-function FeatureOn({ children }: SimpleFeatureFlagStateProps) {
-  return children;
-}
+const FeatureOn = ({ children }: SimpleFeatureFlagStateProps) => <>{children}</>;
 
-function FeatureOff({ children }: SimpleFeatureFlagStateProps) {
-  return children;
-}
+const FeatureOff = ({ children }: SimpleFeatureFlagStateProps) => <>{children}</>;
 
 /**
  * A feature flag wrapper that evaluates a binary value of a specified flag to determine
@@ -117,7 +112,7 @@ function SimpleFeatureFlag({ feature, children }: SimpleFeatureFlagProps) {
     </GenericSimpleFeatureFlagState>
   ));
 
-  return statefulChildren;
+  return <>{statefulChildren}</>;
 }
 
 export { FEATURE_FLAG_POLL_RATE, featureFlags, FeatureOff, FeatureOn, SimpleFeatureFlag };

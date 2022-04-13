@@ -105,10 +105,10 @@ const Details: React.FC<ProjectDetailsWorkflowProps> = ({ children, chips }) => 
     return "";
   };
 
+  const memoizedProjectInfo = React.useMemo(() => ({ projectInfo }), [projectInfo]);
+
   return (
-    // Disabling this lint rule as the value will need to change as projectInfo is updated and then passed down to the other components
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <ProjectDetailsContext.Provider value={{ projectInfo }}>
+    <ProjectDetailsContext.Provider value={memoizedProjectInfo}>
       <StyledContainer container direction="row" wrap="nowrap">
         {/* Column for project details and header */}
         <Grid item direction="column" xs={12} sm={12} md={12} lg={12} xl={12}>

@@ -9,22 +9,20 @@ import { MetadataTable } from "../metadata-table";
 export default {
   title: "Core/Table/Metadata Table",
   decorators: [
-    story => (
-      <WizardContext.Provider
-        value={() => {
-          return {
-            onSubmit: () => {},
-            setOnSubmit: () => {},
-            setIsLoading: () => {},
-            displayWarnings: () => {},
-            onBack: () => {},
-            setHasError: () => {},
-          };
-        }}
-      >
-        {story()}
-      </WizardContext.Provider>
-    ),
+    story => {
+      const value = React.useCallback(
+        () => ({
+          onSubmit: () => {},
+          setOnSubmit: () => {},
+          setIsLoading: () => {},
+          displayWarnings: () => {},
+          onBack: () => {},
+          setHasError: () => {},
+        }),
+        []
+      );
+      return <WizardContext.Provider value={value}>{story()}</WizardContext.Provider>;
+    },
   ],
   component: MetadataTable,
 } as Meta;

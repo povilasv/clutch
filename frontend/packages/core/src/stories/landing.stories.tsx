@@ -8,11 +8,14 @@ import Landing from "../landing";
 export default {
   title: "Core/Landing",
   decorators: [
-    story => (
-      <ApplicationContext.Provider value={{ workflows: [] }}>
-        <Router>{story()}</Router>
-      </ApplicationContext.Provider>
-    ),
+    story => {
+      const workflows = React.useMemo(() => ({ workflows: [] }), []);
+      return (
+        <ApplicationContext.Provider value={workflows}>
+          <Router>{story()}</Router>
+        </ApplicationContext.Provider>
+      );
+    },
   ],
   component: Landing,
 } as Meta;

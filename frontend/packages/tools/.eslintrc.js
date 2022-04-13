@@ -39,6 +39,7 @@ module.exports = {
         unnamedComponents: ["function-expression", "arrow-function"],
       },
     ],
+    "react/jsx-no-useless-fragment": ["error", { allowExpressions: true }],
     "simple-import-sort/imports": [
       "error",
       {

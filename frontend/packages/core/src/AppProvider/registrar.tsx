@@ -43,10 +43,14 @@ const workflowRoutes = (
     }
     return isValidRoute;
   });
-  // eslint-disable-next-line
-  validRoutes.map(r => (r.path = r.path.replace(/^\/+/, "").replace(/\/+$/, "")));
 
-  return validRoutes;
+  return validRoutes.map(r => {
+    const route = r;
+
+    route.path = route.path.replace(/^\/+/, "").replace(/\/+$/, "");
+
+    return route;
+  });
 };
 
 /**

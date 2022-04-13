@@ -82,12 +82,15 @@ const Notifications: React.FC<NotificationsProp> = ({ data }) => {
     setOpen(false);
   };
 
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
+  const handleListKeyDown = React.useCallback(
+    event => {
+      if (event.key === "Tab") {
+        event.preventDefault();
+        setOpen(false);
+      }
+    },
+    [setOpen]
+  );
 
   return (
     <>

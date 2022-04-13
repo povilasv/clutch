@@ -85,11 +85,15 @@ const ClutchApp: React.FC<ClutchAppProps> = ({
     setDiscoverableWorkflows(pw);
   }, [workflows]);
 
+  const appProviderValue = React.useMemo(() => ({ workflows: discoverableWorkflows }), [
+    discoverableWorkflows,
+  ]);
+
   return (
     <Router>
       <Theme variant="light">
         <div id="App">
-          <ApplicationContext.Provider value={{ workflows: discoverableWorkflows }}>
+          <ApplicationContext.Provider value={appProviderValue}>
             <Routes>
               <Route path="/" element={<AppLayout isLoading={isLoading} />}>
                 <Route key="landing" path="" element={<Landing />} />

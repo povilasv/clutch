@@ -171,12 +171,15 @@ const UserInformation: React.FC<UserInformationProps> = ({ data, user = userId()
     setOpen(false);
   };
 
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
+  const handleListKeyDown = React.useCallback(
+    event => {
+      if (event.key === "Tab") {
+        event.preventDefault();
+        setOpen(false);
+      }
+    },
+    [setOpen]
+  );
 
   return (
     <>

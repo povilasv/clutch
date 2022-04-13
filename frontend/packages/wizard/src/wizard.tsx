@@ -129,6 +129,8 @@ function Wizard({ heading, width = "default", dataLayout, children }: WizardProp
     return (
       <>
         <DataLayoutContext.Provider value={dataLayoutManager}>
+          {/* TODO (jslaughter): Fix this lint issue */}
+          {/* eslint-disable-next-line react/jsx-no-constructed-context-values */}
           <WizardContext.Provider value={() => context(child)}>
             <Grid container direction="column" justify="center" alignItems="center">
               {child}

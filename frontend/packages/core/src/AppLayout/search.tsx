@@ -131,6 +131,7 @@ const CustomCloseIcon: React.FC = () => {
 
 function Input(params: AutocompleteRenderInputParams): React.ReactNode {
   const searchRef = React.useRef();
+  const { InputProps } = params;
   const handleKeyPress = (event: KeyboardEvent) => {
     if (searchRef.current) {
       if (event.key === hotKey && (event.target as Node).nodeName !== "INPUT") {
@@ -155,14 +156,14 @@ function Input(params: AutocompleteRenderInputParams): React.ReactNode {
       fullWidth
       inputRef={searchRef}
       InputProps={{
-        ...params.InputProps,
+        ...InputProps,
         disableUnderline: true,
         startAdornment: (
           <>
             <StartInputAdornment position="start">
               <SearchIcon />
             </StartInputAdornment>
-            {params.InputProps.startAdornment}
+            {InputProps.startAdornment}
           </>
         ),
       }}
@@ -249,12 +250,15 @@ const SearchField: React.FC = () => {
 
   // If workflow selected by pressing enter/return,
   // update the open state to collapse search bar to search icon
-  function handleListKeyDown(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
+  const handleListKeyDown = React.useCallback(
+    event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        setOpen(false);
+      }
+    },
+    [setOpen]
+  );
 
   return (
     <Grid container alignItems="center">
