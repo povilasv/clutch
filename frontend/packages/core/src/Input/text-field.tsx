@@ -221,6 +221,14 @@ function TextField({
     );
   }
 
+  // We maintain a defaultVal to prevent the value from changing from underneath
+  // the component. This is required because autocomplete is uncontrolled.
+  const [defaultVal] = React.useState<string>((defaultValue as string) || "");
+  const [autoCompleteOptions, setAutoCompleteOptions] = React.useState<AutocompleteResultProps[]>(
+    []
+  );
+
+  const isEmpty = (defaultValue === undefined || defaultValue === "") && value === "";
   const textFieldProps = {
     onKeyDown,
     onFocus: onChange,
@@ -229,16 +237,14 @@ function TextField({
     helperText: helpText,
     InputProps: {
       readOnly,
-      endAdornment: endAdornment && <IconButton type="submit">{endAdornment}</IconButton>,
+      endAdornment: endAdornment && (
+        <IconButton type="submit" disabled={isEmpty}>
+          {endAdornment}
+        </IconButton>
+      ),
     },
   };
 
-  // We maintain a defaultVal to prevent the value from changing from underneath
-  // the component. This is required because autocomplete is uncontrolled.
-  const [defaultVal] = React.useState<string>((defaultValue as string) || "");
-  const [autoCompleteOptions, setAutoCompleteOptions] = React.useState<AutocompleteResultProps[]>(
-    []
-  );
   const autoCompleteDebounce = React.useRef(
     _.debounce(val => {
       if (autocompleteCallback !== undefined) {

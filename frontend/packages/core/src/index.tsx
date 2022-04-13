@@ -44,6 +44,7 @@ export * from "./Feedback";
 export * from "./Assets/emojis";
 export * from "./NPS";
 export * from "./chip";
+export * from "./Charts";
 
 export { default as ClutchApp } from "./AppProvider";
 
@@ -51,6 +52,7 @@ export type { BaseWorkflowProps, WorkflowConfiguration } from "./AppProvider/wor
 export type { ButtonProps } from "./button";
 export type { ClutchError } from "./Network/errors";
 export type { CardHeaderSummaryProps } from "./card";
+export type { TypographyProps } from "./typography";
 
 export {
   Accordion,

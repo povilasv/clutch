@@ -60,7 +60,7 @@ function LastEvent({ time }: { time: number }) {
       </Grid>
       <Grid item>
         <Typography variant="body4">
-          <EventTime date={setMilliseconds(time)} /> ago
+          <EventTime date={setMilliseconds(time)} {...props} /> ago
         </Typography>
       </Grid>
     </>

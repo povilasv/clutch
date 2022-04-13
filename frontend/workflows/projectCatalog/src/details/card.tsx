@@ -1,4 +1,5 @@
 import React from "react";
+import type { TypographyProps } from "@clutch-sh/core";
 import { Card, ClutchError, Error, Grid, styled, Typography } from "@clutch-sh/core";
 import { LinearProgress } from "@material-ui/core";
 
@@ -13,6 +14,7 @@ export interface CatalogDetailsCard {
 
 interface CardTitleProps {
   title?: string;
+  titleVariant?: TypographyProps["variant"];
   titleIcon?: React.ReactNode;
   endAdornment?: React.ReactNode;
 }
@@ -21,6 +23,8 @@ interface CardBodyProps {
   children?: React.ReactNode;
   /** Manual Control of loading state */
   loading?: boolean;
+  /** Option to hide the loading indicator */
+  loadingIndicator?: boolean;
   /** Manual control of error state */
   error?: ClutchError;
 }
@@ -30,8 +34,6 @@ interface BaseCardProps extends CardTitleProps, CardBodyProps {
   reloadInterval?: number;
   /** Boolean representing whether the component should reload via the fetchDataFn */
   autoReload?: boolean;
-  /** Option to hide the loading indicator */
-  loadingIndicator?: boolean;
   /** Given promise which will be used to initially fetch data and optionally reload on intervals */
   fetchDataFn?: () => Promise<unknown>;
   /** Function called when fetchDataFn returns successfully, returning the data */
@@ -130,7 +132,7 @@ function BaseCard({
     const { fetchDataFn, onSuccess, onError } = props;
 
     if (fetchDataFn) {
-      setIsLoading(true);
+      setCardLoading(true);
 
       fetchDataFn()
         .then(data => {
@@ -145,7 +147,7 @@ function BaseCard({
           }
           setCardError(err);
         })
-        .finally(() => setIsLoading(false));
+        .finally(() => setCardLoading(false));
     }
   };
 
@@ -164,12 +166,8 @@ function BaseCard({
 
   return (
     <StyledCard container direction="row">
-      <Grid container item direction="row" alignItems="flex-start">
-        <CardTitle title={title} titleIcon={titleIcon} endAdornment={endAdornment} />
-      </Grid>
-      <CardBody loading={loadingIndicator && (loading || isLoading)} error={error || cardError}>
-        {children}
-      </CardBody>
+      <CardTitle {...props} />
+      <CardBody loading={loading || cardLoading} error={error || cardError} {...props} />
     </StyledCard>
   );
 }
