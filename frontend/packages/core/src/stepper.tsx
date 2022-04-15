@@ -165,17 +165,11 @@ export interface StepperProps {
   children?: React.ReactElement<StepProps>[] | React.ReactElement<StepProps>;
 }
 
-const StepLabel: React.FC<{ iconProps: StepIconProps }> = ({ children, iconProps }) => {
-  const StepIconComponent = React.useCallback(() => <StepIcon {...iconProps} />, []);
-
-  return <MuiStepLabel StepIconComponent={StepIconComponent}>{children}</MuiStepLabel>;
-};
-
 const Stepper = ({ activeStep, children }: StepperProps) => (
   <StepContainer>
     <MuiStepper activeStep={activeStep} connector={<MuiStepConnector />} alternativeLabel>
       {React.Children.map(children, (step: any, idx: number) => {
-        const stepProps = {
+        const stepProps: StepIconProps = {
           index: idx + 1,
           variant: "pending" as StepIconVariant,
         };
@@ -187,7 +181,10 @@ const Stepper = ({ activeStep, children }: StepperProps) => (
 
         return (
           <MuiStep key={step.props.label}>
-            <StepLabel iconProps={stepProps}>{step.props.label ?? `Step ${idx + 1}`}</StepLabel>
+            {/* eslint-disable-next-line react/no-unstable-nested-components */}
+            <MuiStepLabel StepIconComponent={() => <StepIcon {...stepProps} />}>
+              {step.props.label ?? `Step ${idx + 1}`}
+            </MuiStepLabel>
           </MuiStep>
         );
       })}
